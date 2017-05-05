@@ -1,6 +1,12 @@
+;; No blinking cursor
 (blink-cursor-mode 0)
+
+;; Remove welcome screen
+(setq inhibit-startup-screen t)
+
 ;; Can only turn off toolbar in GUI mode
-(if (functionp 'tool-bar-mode) (tool-bar-mode 0))
+(when window-system
+  (tool-bar-mode 0))
 
 ;; Diplay line number to left of buffer
 (global-linum-mode 1)
@@ -29,11 +35,9 @@
 (setq ido-everywhere t)
 
 ;; Auto-indent on newline
-(define-key global-map (kbd "RET") 'newline-and-indent)
+;;(define-key global-map (kbd "RET") 'newline-and-indent)
 
-;; Easier window navigation with S-arrows
-(windmove-default-keybindings)
-
+;; Not used yet. Allows us to modularize init.el
 (defun load-user-file (file)
   (interactive "f")
   "Load a file in current user's configuration directory"
@@ -74,6 +78,7 @@
 (global-set-key [escape] 'evil-exit-emacs-state)
 
 ;; Function to install required package if it doesn't already exist
+;; TODO: Place this farther up and actually use it
 (defun require-package (package)
   (setq-default highlight-tabs t)
   "Install given package."
@@ -91,3 +96,19 @@
 (require 'evil-search-highlight-persist)
 (global-evil-search-highlight-persist t)
 (evil-leader/set-key "SPC" 'evil-search-highlight-persist-remove-all)
+
+;; Company mode for completions
+(require-package 'company)
+(require 'company)
+(add-hook 'prog-mode-hook 'global-company-mode)
+;; Reduce the time after which the company auto completion popup opens
+(setq company-idle-delay 0.2)
+;; Reduce the number of characters before company kicks in
+(setq company-minimum-prefix-length 1)
+
+;; Flycheck for syntax checking
+(require-package 'flycheck)
+(require 'flycheck)
+(add-hook 'prog-mode-hook 'global-flycheck-mode)
+
+(load-user-file "rust.el")
