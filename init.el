@@ -91,3 +91,5 @@
 (require 'evil-search-highlight-persist)
 (global-evil-search-highlight-persist t)
 (evil-leader/set-key "SPC" 'evil-search-highlight-persist-remove-all)
+
+(load-user-file "mu4e.el")
