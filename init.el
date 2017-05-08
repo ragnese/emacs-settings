@@ -48,37 +48,7 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
-;; Give us back Ctrl+U for vim emulation
-;; NOTE: Must be set before (require 'evil)
-(setq evil-want-C-u-scroll t)
-(require 'evil)
-(evil-mode 1)
-
-(require 'molokai-theme)
-(load-theme 'molokai t)
-
-;; Make ESC actually escape more things (like C-g)
-(defun minibuffer-keyboard-quit ()
-  "Abort recursive edit.
-  In Delete Selection mode, if the mark is active, just deactivate it;
-  then it takes a second \\[keyboard-quit] to abort the minibuffer."
-  (interactive)
-  (if (and delete-selection-mode transient-mark-mode mark-active)
-    (setq deactivate-mark  t)
-    (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
-    (abort-recursive-edit)))
-
-(define-key evil-normal-state-map [escape] 'keyboard-quit)
-(define-key evil-visual-state-map [escape] 'keyboard-quit)
-(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
-(global-set-key [escape] 'evil-exit-emacs-state)
-
 ;; Function to install required package if it doesn't already exist
-;; TODO: Place this farther up and actually use it
 (defun require-package (package)
   (setq-default highlight-tabs t)
   "Install given package."
@@ -87,29 +57,43 @@
       (package-refresh-contents))
     (package-install package)))
 
-;; Leader key in Evil
-(setq evil-leader/in-all-states 1)
-(global-evil-leader-mode)
-(evil-leader/set-leader "SPC")
+(require-package 'use-package)
+(require 'use-package)
 
-;; Vim-like search highlighting
-(require 'evil-search-highlight-persist)
-(global-evil-search-highlight-persist t)
-(evil-leader/set-key "SPC" 'evil-search-highlight-persist-remove-all)
+;; Color scheme
+(use-package molokai-theme
+  :ensure t
+  :config
+  (load-theme 'molokai t))
 
 ;; Company mode for completions
-(require-package 'company)
-(require 'company)
-(add-hook 'prog-mode-hook 'global-company-mode)
-;; Reduce the time after which the company auto completion popup opens
-(setq company-idle-delay 0.2)
-;; Reduce the number of characters before company kicks in
-(setq company-minimum-prefix-length 1)
+(use-package company
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'global-company-mode)
+  ;; Reduce the time after which the company auto completion popup opens
+  (setq company-idle-delay 0.2)
+  ;; Reduce the number of characters before company kicks in
+  (setq company-minimum-prefix-length 1)
+  (setq company-tooltip-align-annotations t))
 
 ;; Flycheck for syntax checking
-(require-package 'flycheck)
-(require 'flycheck)
-(add-hook 'prog-mode-hook 'global-flycheck-mode)
+(use-package flycheck
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'global-flycheck-mode))
 
+;; File tree
+(use-package neotree
+  :ensure t)
+
+;; Make sure Emacs's PATH matches shell's on macOS
+(use-package exec-path-from-shell
+  :if (eq window-system 'ns)
+  :ensure t
+  :config
+  (exec-path-from-shell-initialize))
+
+(load-user-file "evil.el")
 (load-user-file "mu4e.el")
 (load-user-file "rust.el")

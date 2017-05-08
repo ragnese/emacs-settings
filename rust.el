@@ -1,18 +1,17 @@
-(require-package 'rust-mode)
-(require 'rust-mode)
+(use-package rust-mode
+  :ensure t)
 
-(require-package 'racer)
-(require 'racer)
+(use-package racer
+  :ensure t
+  :config
+  (setq racer-cmd (concat (getenv "HOME") "/.cargo/bin/racer")))
 
-(require-package 'flycheck-rust)
-(require 'flycheck-rust)
+(use-package flycheck-rust
+  :ensure t)
 
 (add-hook 'rust-mode-hook #'racer-mode)
 (add-hook 'racer-mode-hook #'eldoc-mode)
 (add-hook 'racer-mode-hook #'company-mode)
 (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 
-(setq racer-cmd (concat (getenv "HOME") "/.cargo/bin/racer"))
-
 (define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
-(setq company-tooltip-align-annotations t)
