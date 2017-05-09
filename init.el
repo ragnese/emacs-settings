@@ -85,7 +85,12 @@
 
 ;; File tree
 (use-package neotree
-  :ensure t)
+  :ensure t
+  :config
+  (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+  (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-enter)
+  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+  (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hit))
 
 ;; Make sure Emacs's PATH matches shell's on macOS
 (use-package exec-path-from-shell
