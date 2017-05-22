@@ -1,3 +1,7 @@
+;;; package --- Emacs init.el
+;;; Commentary:
+;;; Code:
+
 ;; No blinking cursor
 (blink-cursor-mode 0)
 
@@ -8,11 +12,11 @@
 (when window-system
   (tool-bar-mode 0))
 
-;; Diplay line number to left of buffer
-(global-linum-mode 1)
-
 ;; Display (row, col) in mode line
 (setq column-number-mode t)
+
+;; Don't wrap lines
+;;(set-default 'truncate-lines t)
 
 ;; Make scrolling way slower
 (setq mouse-wheel-scroll-amount '(0.07))
@@ -23,6 +27,9 @@
 ;; Stop the annoying beep
 (setq ring-bell-function 'ignore)
 
+;; Highlight parentheses in programming major modes
+(add-hook 'prog-mode-hook 'show-paren-mode)
+
 ;; When using built-in customize options, put the results into custom.el
 ;; instead of init.el. Then load that file from here.
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -30,18 +37,12 @@
   (load custom-file))
 
 ;; Ido mode
-(ido-mode 1)
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
+;;(ido-mode 1)
+;;(setq ido-enable-flex-matching t)
+;;(setq ido-everywhere t)
 
 ;; Auto-indent on newline
 ;;(define-key global-map (kbd "RET") 'newline-and-indent)
-
-;; Not used yet. Allows us to modularize init.el
-(defun load-user-file (file)
-  (interactive "f")
-  "Load a file in current user's configuration directory"
-  (load-file (expand-file-name file "~/.emacs.d")))
 
 ;; Package management stuff
 (require 'package)
@@ -50,8 +51,8 @@
 
 ;; Function to install required package if it doesn't already exist
 (defun require-package (package)
+  "Install PACKAGE if not already installed."
   (setq-default highlight-tabs t)
-  "Install given package."
   (unless (package-installed-p package)
     (unless (assoc package package-archive-contents)
       (package-refresh-contents))
@@ -59,6 +60,12 @@
 
 (require-package 'use-package)
 (require 'use-package)
+
+;; Faster version of built-in linum mode
+(use-package nlinum
+  :ensure t
+  :config
+  (global-nlinum-mode))
 
 ;; Color scheme
 (use-package molokai-theme
@@ -69,28 +76,31 @@
 ;; Company mode for completions
 (use-package company
   :ensure t
+  :diminish company-mode
   :config
   (add-hook 'prog-mode-hook 'global-company-mode)
   ;; Reduce the time after which the company auto completion popup opens
-  (setq company-idle-delay 0.2)
+  ;;(setq company-idle-delay 0.2)
   ;; Reduce the number of characters before company kicks in
   (setq company-minimum-prefix-length 1)
+  (define-key company-active-map (kbd "C-n") 'company-select-next)
+  (define-key company-active-map (kbd "C-p") 'company-select-previous)
   (setq company-tooltip-align-annotations t))
 
 ;; Flycheck for syntax checking
 (use-package flycheck
   :ensure t
   :config
-  (add-hook 'prog-mode-hook 'global-flycheck-mode))
+  (add-hook 'prog-mode-hook 'global-flycheck-mode)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled)))
+
+;; Highlight or otherwise annoy us when lines are too long
+(use-package column-enforce-mode
+  :ensure t)
 
 ;; File tree
 (use-package neotree
-  :ensure t
-  :config
-  (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
-  (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-enter)
-  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
-  (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hit))
+  :ensure t)
 
 ;; Make sure Emacs's PATH matches shell's on macOS
 (use-package exec-path-from-shell
@@ -99,6 +109,47 @@
   :config
   (exec-path-from-shell-initialize))
 
-(load-user-file "evil.el")
-(load-user-file "mu4e.el")
-(load-user-file "rust.el")
+(use-package magit
+  :ensure t
+  :diminish auto-revert-mode
+  :config
+  (use-package evil-magit
+    :ensure t))
+
+(use-package projectile
+  :ensure t
+  :diminish projectile-mode
+  :config
+  (add-hook 'prog-mode-hook 'projectile-mode)
+  (evil-define-key 'normal prog-mode-map (kbd "C-p") 'projectile-find-file)
+  (evil-define-key 'insert prog-mode-map (kbd "C-p") 'projectile-find-file)
+  (evil-define-key 'visual prog-mode-map (kbd "C-p") 'projectile-find-file))
+
+(use-package ivy
+  :ensure t
+  :diminish ivy-mode
+  :config
+  (ivy-mode 1)
+  ;; Do not show "./" and "../" in the `counsel-find-file' completion list
+  (setq ivy-extra-directories nil) ; default value: ("../" "./")
+  (defun modi/ivy-kill-buffer ()
+    (interactive)
+    (ivy-set-action 'kill-buffer)
+    (ivy-done))
+  (bind-keys
+   :map ivy-switch-buffer-map
+   ("C-k" . modi/ivy-kill-buffer))
+  (use-package counsel-projectile
+    :ensure t
+    :config
+    (counsel-projectile-on)))
+
+;; Add our own config directory to the load-path list
+(add-to-list 'load-path "~/.emacs.d/elisp")
+(require 'init-evil)
+(require 'init-rust)
+;(require 'init-helm)
+;(require 'init-mu4e)
+
+(provide 'init)
+;;; init.el ends here

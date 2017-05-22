@@ -1,3 +1,9 @@
+;;; package --- Initializes my mu4esettings.
+
+;;; Commentary:
+
+;;; Code:
+
 ;; Enable mu4e
 (use-package mu4e
   :config
@@ -10,7 +16,7 @@
 	     :leave-func (lambda () (mu4e-message "Leaving UFL context"))
 	     ;; we match based on the contact-fields of the message
 	     :match-func (lambda (msg)
-			   (when msg 
+			   (when msg
 			     (mu4e-message-contact-field-matches msg 
 								 :to "ragnese@ufl.edu")))
 	     :vars '((user-mail-address      . "ragnese@ufl.edu")
@@ -49,3 +55,6 @@
   ;; compose with the current context is no context matches;
   ;; default is to ask 
   (setq mu4e-compose-context-policy nil))
+
+(provide 'init-mu4e)
+;;; init-mu4e ends here
