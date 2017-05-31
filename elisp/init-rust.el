@@ -3,7 +3,6 @@
 ;;; Commentary:
 
 ;;; Code:
-
 (use-package rust-mode
   :ensure t
   :config
@@ -29,7 +28,6 @@
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 (diminish 'eldoc-mode)
-(diminish 'column-enforce-mode)
 
 (provide 'init-rust)
 ;;; init-rust.el ends here

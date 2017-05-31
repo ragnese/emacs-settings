@@ -4,7 +4,7 @@
 
 ;;; Code:
 
-;; Make ESC actually escape more things (like C-g)
+;; Function to make ESC actually escape more things (like C-g)
 ;; For use with evil mode
 (defun minibuffer-keyboard-quit ()
   "Abort recursive edit.
@@ -19,16 +19,21 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; Evil mode
 (use-package evil
   :ensure t
+
   :init
   ;; Give us back Ctrl+U for vim emulation
   (setq evil-want-C-u-scroll t)
+
   :config
   (evil-mode 1)
+
   (use-package evil-leader
     :ensure t
     :config
     (global-evil-leader-mode))
-  (evil-leader/set-leader (kbd "SPC"))
+
+  (evil-leader/set-leader "SPC")
+
   ;; Make ESC replace C-g
   (define-key evil-normal-state-map [escape] 'keyboard-quit)
   (define-key evil-visual-state-map [escape] 'keyboard-quit)
@@ -38,21 +43,34 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
   (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
   (global-set-key [escape] 'evil-exit-emacs-state)
-  (define-key ivy-mode-map [escape] 'minibuffer-keyboard-quit)
+
   ;; Fix C-u not scrolling up
   (when evil-want-C-u-scroll
    (define-key evil-insert-state-map (kbd "C-u") 'evil-scroll-up)
    (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
    (define-key evil-visual-state-map (kbd "C-u") 'evil-scroll-up)
    (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up))
+
   ;; Add vimmy keybindings to neotree
+  ;; These don't work
   (evil-define-key 'normal neotree-mode-map
     (kbd "TAB") 'neotree-enter
     (kbd "SPC") 'neotree-enter
     (kbd "RET") 'neotree-enter
     (kbd "q") 'neotree-hit)
+
+  ;; Add command to delete buffer without closing split
+  (evil-define-command delete-buffer-preserve-split ()
+    "Deletes the current buffer, like :bd, but doesn't close the split"
+    (let ((prev-buffer (current-buffer)))
+      (evil-prev-buffer)
+      (evil-delete-buffer prev-buffer)))
+
+  (evil-ex-define-cmd "Bd" 'delete-buffer-preserve-split)
+
   ;; Diminish the mode-line for undo-tree, which is a dep of evil-mode
   (diminish 'undo-tree-mode)
+
   ;; Vim-like search highlighting
   (use-package evil-search-highlight-persist
     :ensure t
