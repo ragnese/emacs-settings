@@ -33,6 +33,7 @@
 ;; Highlight parentheses in programming major modes
 (add-hook 'prog-mode-hook 'show-paren-mode)
 
+
 ;; When using built-in customize options, put the results into custom.el
 ;; instead of init.el. Then load that file from here.
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -56,6 +57,11 @@
 (require-package 'use-package)
 (require 'use-package)
 
+;; The eldoc minor mode button is useless
+;; NOTE: This must be after requiring use-package, since
+;; diminish is a dep thereof.
+(diminish 'eldoc-mode)
+
 ;; Add our own config directory to the load-path list
 (add-to-list 'load-path "~/.emacs.d/elisp")
 ;; Faster than built-in line numbering
@@ -64,12 +70,13 @@
 (require 'init-theme)
 ;; Vim
 (require 'init-evil)
+;; Project awareness
+(require 'init-projectile)
 ;; Fuzzy finding things (files, buffers, etc)
+;; NOTE: Must be required after projectile
 (require 'init-ivy)
 ;; Completion
 (require 'init-company)
-;; Project awareness
-(require 'init-projectile)
 ;; Git porcelain
 (require 'init-magit)
 ;; Do Rust

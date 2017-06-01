@@ -19,20 +19,14 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; Evil mode
 (use-package evil
   :ensure t
-
-  :init
-  ;; Give us back Ctrl+U for vim emulation
-  (setq evil-want-C-u-scroll t)
-
   :config
   (evil-mode 1)
 
   (use-package evil-leader
     :ensure t
     :config
-    (global-evil-leader-mode))
-
-  (evil-leader/set-leader "SPC")
+    (global-evil-leader-mode)
+    (evil-leader/set-leader "SPC"))
 
   ;; Make ESC replace C-g
   (define-key evil-normal-state-map [escape] 'keyboard-quit)
@@ -44,12 +38,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
   (global-set-key [escape] 'evil-exit-emacs-state)
 
-  ;; Fix C-u not scrolling up
-  (when evil-want-C-u-scroll
-   (define-key evil-insert-state-map (kbd "C-u") 'evil-scroll-up)
-   (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
-   (define-key evil-visual-state-map (kbd "C-u") 'evil-scroll-up)
-   (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up))
+  ;; Fix C-u not scrolling up - evil-want-C-u-scroll seems to not work
+  (define-key evil-insert-state-map (kbd "C-u") 'evil-scroll-up)
+  (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
+  (define-key evil-visual-state-map (kbd "C-u") 'evil-scroll-up)
+  (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
 
   ;; Add vimmy keybindings to neotree
   ;; These don't work
