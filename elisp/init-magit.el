@@ -9,7 +9,9 @@
   :diminish auto-revert-mode
   :config
   (use-package evil-magit
-    :ensure t))
+    :ensure t)
+  (when (fboundp 'evil-mode)
+    (evil-ex-define-cmd "git" 'magit-status)))
 
 (provide 'init-magit)
 ;;; init-magit.el ends here
