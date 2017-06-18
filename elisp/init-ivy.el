@@ -6,6 +6,7 @@
 
 (use-package ivy
   :ensure t
+  :defer t
   :diminish ivy-mode
   :config
   (ivy-mode 1)
@@ -17,7 +18,7 @@
   (define-key ivy-mode-map [escape] 'minibuffer-keyboard-quit)
 
   ;; Function kills buffer in ivy buffer list
-  (defun my/ivy-kill-buffer ()
+  (defun local/ivy-kill-buffer ()
     (interactive)
     "Function kills buffer in ivy buffer list."
     (ivy-set-action 'kill-buffer)
@@ -26,14 +27,7 @@
   ;; Use C-k to kill buffer in ivy buffer list
   (bind-keys
    :map ivy-switch-buffer-map
-   ("C-k" . my/ivy-kill-buffer))
-
-  (when (fboundp 'projectile-mode)
-    ;; Add projectile support to ivy
-    (use-package counsel-projectile
-      :ensure t
-      :config
-      (counsel-projectile-on))))
+   ("C-k" . local/ivy-kill-buffer)))
 
 (provide 'init-ivy)
 ;;; init-ivy.el ends here

@@ -16,8 +16,6 @@
   :diminish racer-mode
   :config
   (setq racer-cmd (concat (getenv "HOME") "/.cargo/bin/racer"))
-  (when (fboundp 'evil-mode)
-    (evil-define-key 'normal rust-mode-map (kbd "gd") #'racer-find-definition))
   (add-hook 'rust-mode-hook #'racer-mode)
   (add-hook 'racer-mode-hook #'eldoc-mode)
   (when (fboundp 'company-mode)

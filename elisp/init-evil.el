@@ -61,6 +61,20 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
   (evil-ex-define-cmd "Bd" 'delete-buffer-preserve-split)
 
+  ;; Use projectile like Vim's CtrlP plugin
+  (when (fboundp 'projectile-mode)
+    (define-key evil-normal-state-map (kbd "C-p") 'projectile-find-file))
+
+  ;; Add evil-magit and create ex-command for magit-status
+  (when (fboundp 'magit-status)
+    (use-package evil-magit
+      :ensure t)
+    (evil-ex-define-cmd "git" 'magit-status))
+
+  ;; Racer
+  (when (fboundp 'racer-mode)
+    (evil-define-key 'normal rust-mode-map (kbd "gd") #'racer-find-definition))
+
   ;; Diminish the mode-line for undo-tree, which is a dep of evil-mode
   (diminish 'undo-tree-mode)
 

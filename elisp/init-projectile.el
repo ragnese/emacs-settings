@@ -9,8 +9,12 @@
   :diminish projectile-mode
   :config
   (projectile-mode 1)
-  (when (fboundp 'evil-mode)
-    (define-key evil-normal-state-map (kbd "C-p") 'projectile-find-file)))
+  ;; Prefer ivy for projectile
+  (require 'init-ivy)
+  (use-package counsel-projectile
+      :ensure t
+      :config
+      (counsel-projectile-on)))
 
 (provide 'init-projectile)
 ;;; init-projectile.el ends here

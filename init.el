@@ -33,7 +33,6 @@
 ;; Highlight parentheses in programming major modes
 (add-hook 'prog-mode-hook 'show-paren-mode)
 
-
 ;; When using built-in customize options, put the results into custom.el
 ;; instead of init.el. Then load that file from here.
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -56,7 +55,6 @@
 
 (require-package 'use-package)
 (require 'use-package)
-
 ;; The eldoc minor mode button is useless
 ;; NOTE: This must be after requiring use-package, since
 ;; diminish is a dep thereof.
@@ -68,13 +66,10 @@
 (require 'init-nlinum)
 ;; Color theme(s)
 (require 'init-theme)
-;; Vim
-(require 'init-evil)
+;; Fuzzy finding things (files, buffers, etc)
+(require 'init-ivy)
 ;; Project awareness
 (require 'init-projectile)
-;; Fuzzy finding things (files, buffers, etc)
-;; NOTE: Must be required after projectile
-(require 'init-ivy)
 ;; Completion
 (require 'init-company)
 ;; Git porcelain
@@ -91,6 +86,8 @@
 (require 'init-flycheck)
 ;(require 'init-helm)
 ;(require 'init-mu4e)
+;; Vim - NOTE: Make sure it's after everyone else
+(require 'init-evil)
 
 (provide 'init)
 ;;; init.el ends here
