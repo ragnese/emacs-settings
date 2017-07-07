@@ -39,6 +39,20 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
+;; Function to rename file in current buffer
+(defun rename-file-and-buffer ()
+  "Rename the current buffer and file it is visiting."
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (if (not (and filename (file-exists-p filename)))
+	(message "Buffer is not visiting a file!")
+      (let ((new-name (read-file-name "New name: " filename)))
+	(cond
+	 ((vc-backend filename) (vc-rename-file filename new-name))
+	 (t
+	  (rename-file filename new-name t)
+	  (set-visited-file-name new-name t t)))))))
+
 ;; Package management stuff
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
@@ -63,7 +77,7 @@
 ;; Add our own config directory to the load-path list
 (add-to-list 'load-path "~/.emacs.d/elisp")
 ;; Faster than built-in line numbering
-(require 'init-nlinum)
+;;(require 'init-nlinum)
 ;; Color theme(s)
 (require 'init-theme)
 ;; Fuzzy finding things (files, buffers, etc)
@@ -84,6 +98,10 @@
 (require 'init-column-enforce-mode)
 ;; Syntax checking
 (require 'init-flycheck)
+;; Scheme
+(require 'init-geiser)
+;; Which-key gives pop up hints for keybindings
+(require 'init-which-key)
 ;(require 'init-helm)
 ;(require 'init-mu4e)
 ;; Vim - NOTE: Make sure it's after everyone else

@@ -59,11 +59,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
       (evil-prev-buffer)
       (evil-delete-buffer prev-buffer)))
 
-  (evil-ex-define-cmd "Bd" 'delete-buffer-preserve-split)
+  (evil-ex-define-cmd "Bd" #'delete-buffer-preserve-split)
 
   ;; Use projectile like Vim's CtrlP plugin
   (when (fboundp 'projectile-mode)
-    (define-key evil-normal-state-map (kbd "C-p") 'projectile-find-file))
+    (define-key evil-normal-state-map (kbd "C-p") #'projectile-find-file))
 
   ;; Add evil-magit and create ex-command for magit-status
   (when (fboundp 'magit-status)
@@ -75,6 +75,19 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (when (fboundp 'racer-mode)
     (evil-define-key 'normal rust-mode-map (kbd "gd") #'racer-find-definition))
 
+  ;; Define some cargo commands for Rust mode
+  (when (fboundp #'cargo-minor-mode)
+    (evil-ex-define-cmd "build" #'cargo-process-build)
+    (evil-ex-define-cmd "check" #'cargo-process-check)
+    (evil-ex-define-cmd "clippy" #'cargo-process-clippy)
+    (evil-ex-define-cmd "fmt" #'cargo-process-fmt)
+    (evil-ex-define-cmd "test" #'cargo-process-test))
+
+  ;; Allow evil operator hints in which-key
+  (when (fboundp #'which-key-mode)
+    (setq which-key-allow-evil-operators t)
+    (setq which-key-show-operator-state-maps t))
+
   ;; Diminish the mode-line for undo-tree, which is a dep of evil-mode
   (diminish 'undo-tree-mode)
 
@@ -83,7 +96,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     :ensure t
     :config
     (global-evil-search-highlight-persist t)
-    (evil-leader/set-key "SPC" 'evil-search-highlight-persist-remove-all)))
+    (evil-leader/set-key "SPC" #'evil-search-highlight-persist-remove-all)))
 
 (provide 'init-evil)
 ;;; init-evil ends here
