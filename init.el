@@ -102,6 +102,8 @@
 (require 'init-geiser)
 ;; Which-key gives pop up hints for keybindings
 (require 'init-which-key)
+;; Use for leader-key based keybindings
+(require 'init-general)
 ;(require 'init-helm)
 ;(require 'init-mu4e)
 ;; Vim - NOTE: Make sure it's after everyone else

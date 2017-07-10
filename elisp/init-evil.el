@@ -22,12 +22,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   :config
   (evil-mode 1)
 
-  (use-package evil-leader
-    :ensure t
-    :config
-    (global-evil-leader-mode)
-    (evil-leader/set-leader "SPC"))
-
   ;; Make ESC replace C-g
   (define-key evil-normal-state-map [escape] 'keyboard-quit)
   (define-key evil-visual-state-map [escape] 'keyboard-quit)
@@ -95,8 +89,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (use-package evil-search-highlight-persist
     :ensure t
     :config
-    (global-evil-search-highlight-persist t)
-    (evil-leader/set-key "SPC" #'evil-search-highlight-persist-remove-all)))
+    (global-evil-search-highlight-persist t)))
 
 (provide 'init-evil)
 ;;; init-evil ends here
