@@ -53,6 +53,16 @@
 	  (rename-file filename new-name t)
 	  (set-visited-file-name new-name t t)))))))
 
+(defun add-to-path (path)
+  "Add PATH to $PATH env variable."
+  (interactive "D:")
+  (setenv "PATH" (concat (getenv "PATH") (concat ":" path))))
+
+(defun add-to-exec-path (path)
+  "Add PATH to 'exec-path'."
+  (interactive "D:")
+  (setq exec-path (append exec-path '(path))))
+
 ;; Package management stuff
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
@@ -90,6 +100,7 @@
 (require 'init-magit)
 ;; Do Rust
 (require 'init-rust)
+;(require 'init-rust2) ; experiment with RLS
 ;; macOS fix for PATH
 (require 'init-macos)
 ;; file tree pane
@@ -104,6 +115,7 @@
 (require 'init-which-key)
 ;; Use for leader-key based keybindings
 (require 'init-general)
+(require 'init-org)
 ;(require 'init-helm)
 ;(require 'init-mu4e)
 ;; Vim - NOTE: Make sure it's after everyone else
