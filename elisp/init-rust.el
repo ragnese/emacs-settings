@@ -19,7 +19,10 @@
   (add-hook 'rust-mode-hook #'racer-mode)
   (add-hook 'racer-mode-hook #'eldoc-mode)
   (when (fboundp 'company-mode)
-    (add-hook 'racer-mode-hook #'company-mode)))
+    (add-hook 'racer-mode-hook #'company-mode))
+  (when (eq window-system 'ns)
+    (setq racer-rust-src-path (concat (getenv "HOME") "/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"))))
+
 
 (when (fboundp 'flycheck-mode)
   (use-package flycheck-rust
