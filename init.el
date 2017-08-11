@@ -118,6 +118,8 @@
 (require 'init-org)
 ;(require 'init-helm)
 ;(require 'init-mu4e)
+(require 'init-auctex)
+(require 'init-python)
 ;; Vim - NOTE: Make sure it's after everyone else
 (require 'init-evil)
 
