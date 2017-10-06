@@ -33,6 +33,15 @@
 ;; Highlight parentheses in programming major modes
 (add-hook 'prog-mode-hook 'show-paren-mode)
 
+;; No tabs for indent
+(setq-default indent-tabs-mode nil)
+
+;; Allow primary selection clipboard (highlight + middle-click)
+(setq select-enable-primary t)
+
+;; Paste where mouse cursor is (nil, default) or where point is (t)
+;(setq mouse-yank-at-point nil)
+
 ;; When using built-in customize options, put the results into custom.el
 ;; instead of init.el. Then load that file from here.
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -62,6 +71,16 @@
   "Add PATH to 'exec-path'."
   (interactive "D:")
   (setq exec-path (append exec-path '(path))))
+
+(defun new-project ()
+  "Initialize a new git repo and add it to projectile's known projects.
+Requires magit and projectile packages."
+  (interactive)
+  (let ((project-dir (expand-file-name
+                      (read-directory-name "New project root:"))))
+    (magit-init project-dir)
+    (projectile-add-known-project project-dir)
+    (setq default-directory project-dir)))
 
 ;; Package management stuff
 (require 'package)
@@ -104,7 +123,8 @@
 ;; macOS fix for PATH
 (require 'init-macos)
 ;; file tree pane
-(require 'init-neotree)
+;(require 'init-neotree)
+(require 'init-treemacs)
 ;; Change font colors when lines are too long
 (require 'init-column-enforce-mode)
 ;; Syntax checking
@@ -120,6 +140,7 @@
 ;(require 'init-mu4e)
 (require 'init-auctex)
 (require 'init-python)
+(require 'init-elixir)
 ;; Vim - NOTE: Make sure it's after everyone else
 (require 'init-evil)
 

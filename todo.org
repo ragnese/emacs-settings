@@ -1,0 +1,5 @@
+* TODO Create a function+shortcut to add file to project
+The idea is that I should be able to start editing a new file with some
+path relative to the root of the project. See if we can use a projectile
+function to get the root and then set default-directory to that temporarily,
+probably via `let`.
