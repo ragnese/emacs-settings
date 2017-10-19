@@ -38,13 +38,16 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (define-key evil-visual-state-map (kbd "C-u") 'evil-scroll-up)
   (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
 
-  ;; Add vimmy keybindings to neotree
-  ;; These don't work
-  (evil-define-key 'normal neotree-mode-map
-    (kbd "TAB") 'neotree-enter
-    (kbd "SPC") 'neotree-enter
-    (kbd "RET") 'neotree-enter
-    (kbd "q") 'neotree-hit)
+  ;; Add evil-smartparens if smartparens is installed
+  (when (fboundp #'smartparens-mode)
+    (use-package evil-smartparens
+      :ensure t
+      :config
+      (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
+      ;; If we use smartparens in non-lispy languages, it's probably
+      ;; better to only enable evil-smartparens for specific languages.
+      ;(add-hook 'clojure-mode-hook #'evil-smartparens-mode)
+      ))
 
   ;; Add command to delete buffer without closing split
   (evil-define-command delete-buffer-preserve-split ()

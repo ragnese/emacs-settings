@@ -141,6 +141,8 @@ Requires magit and projectile packages."
 (require 'init-auctex)
 (require 'init-python)
 (require 'init-elixir)
+(require 'init-clojure)
+(require 'init-lisps)
 ;; Vim - NOTE: Make sure it's after everyone else
 (require 'init-evil)
 
