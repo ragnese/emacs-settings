@@ -14,7 +14,7 @@
   (use-package counsel-projectile
       :ensure t
       :config
-      (counsel-projectile-on)))
+      (counsel-projectile-mode)))
 
 (provide 'init-projectile)
 ;;; init-projectile.el ends here

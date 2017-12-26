@@ -97,20 +97,19 @@ Requires magit and projectile packages."
     (package-install package)))
 
 (require-package 'use-package)
-(require 'use-package)
-;; The eldoc minor mode button is useless
-;; NOTE: This must be after requiring use-package, since
-;; diminish is a dep thereof.
-(diminish 'eldoc-mode)
+(eval-when-compile
+  (require 'use-package))
 
 ;; Add our own config directory to the load-path list
 (add-to-list 'load-path "~/.emacs.d/elisp")
+;; This must be first, since my use-package declarations depend on it
+(require 'init-diminish)
 ;; Faster than built-in line numbering
 ;;(require 'init-nlinum)
 ;; Color theme(s)
 (require 'init-theme)
 ;; Fuzzy finding things (files, buffers, etc)
-(require 'init-ivy)
+;(require 'init-ivy)
 ;; Project awareness
 (require 'init-projectile)
 ;; Completion
