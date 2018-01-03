@@ -22,17 +22,20 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   :config
   (evil-mode 1)
 
-  ;; Make ESC replace C-g
-  (define-key evil-normal-state-map [escape] 'keyboard-quit)
-  (define-key evil-visual-state-map [escape] 'keyboard-quit)
-  (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
-  (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
-  (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
-  (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
-  (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
-  (global-set-key [escape] 'evil-exit-emacs-state)
+  ;; Add Vim bindings to many modes
+  (use-package evil-collection
+    :ensure t
+    ;; This enables vim bindings in minibuffer
+    ;:custom (evil-collection-setup-minibuffer t)
+    :init (evil-collection-init))
+
+  ;; Make '_' count as part of a word (like real Vim, unlike Emacs)
+  (modify-syntax-entry ?_ "w")
 
   ;; Fix C-u not scrolling up - evil-want-C-u-scroll seems to not work
+  ;(setq evil-want-C-u-scroll t)
+  (define-key global-map (kbd "M-u") #'universal-argument)
+  (define-key universal-argument-map (kbd "M-u") #'universal-argument-more)
   (define-key evil-insert-state-map (kbd "C-u") 'evil-scroll-up)
   (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
   (define-key evil-visual-state-map (kbd "C-u") 'evil-scroll-up)
@@ -68,10 +71,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
       :ensure t)
     (evil-ex-define-cmd "git" 'magit-status))
 
-  ;; Racer
-  (when (fboundp 'racer-mode)
-    (evil-define-key 'normal rust-mode-map (kbd "gd") #'racer-find-definition))
-
   ;; Define some cargo commands for Rust mode
   (when (fboundp #'cargo-minor-mode)
     (evil-ex-define-cmd "build" #'cargo-process-build)
@@ -86,7 +85,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     (setq which-key-show-operator-state-maps t))
 
   ;; Diminish the mode-line for undo-tree, which is a dep of evil-mode
-  (diminish 'undo-tree-mode)
+  (when (fboundp #'diminish)
+    (diminish 'undo-tree-mode))
 
   ;; Vim-like search highlighting
   (use-package evil-search-highlight-persist
