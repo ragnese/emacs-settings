@@ -7,6 +7,7 @@
   :config
   (ivy-mode 1)
   (counsel-mode 1)
+  (diminish 'counsel-mode)
 
   ;; Do not show "./" and "../" in the `counsel-find-file' completion list
   (setq ivy-extra-directories nil) ; default value: ("../" "./")
