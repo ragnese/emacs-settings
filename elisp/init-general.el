@@ -31,6 +31,10 @@
           "C-<right>" #'sp-forward-slurp-sexp
           "M-<right>" #'sp-forward-barf-sexp
           "C-<left>" #'sp-backward-slurp-sexp
-          "M-<left>" #'sp-backward-barf-sexp))))
+          "M-<left>" #'sp-backward-barf-sexp))
+
+       (when (fboundp #'treemacs-projectile-toggle)
+         (general-define-key "<f8>" #'treemacs-projectile-toggle))))
+
 (provide 'init-general)
 ;;; init-general ends here
