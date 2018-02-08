@@ -1,7 +1,5 @@
 ;;; package --- Initializes my theme settings.
-
 ;;; Commentary:
-
 ;;; Code:
 
 ;; Color scheme

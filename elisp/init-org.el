@@ -1,9 +1,6 @@
 ;;; package --- Initializes my Org mode settings.
-
 ;;; Commentary:
-
 ;;; Code:
-
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((scheme . t)

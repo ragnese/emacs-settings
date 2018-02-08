@@ -1,7 +1,5 @@
 ;;; package --- Initializes my treemacs settings.
-
 ;;; Commentary:
-
 ;;; Code:
 (use-package treemacs
   :ensure t
@@ -29,6 +27,7 @@
     (treemacs-filewatch-mode t)))
 
 (use-package treemacs-projectile
+  :after (treemacs projectile)
   :ensure t
   :defer t
   :config

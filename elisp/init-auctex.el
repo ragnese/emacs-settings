@@ -1,7 +1,5 @@
 ;;; package --- Initializes my Auctex settings.
-
 ;;; Commentary:
-
 ;;; Code:
 (use-package tex
   :ensure auctex

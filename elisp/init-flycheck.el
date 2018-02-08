@@ -1,9 +1,6 @@
 ;;; package --- Initializes my flycheck settings.
-
-;;; Commentary:
-
+;;; Commentary: Syntax checking
 ;;; Code:
-;; Flycheck for syntax checking
 (use-package flycheck
   :ensure t
   :defer t

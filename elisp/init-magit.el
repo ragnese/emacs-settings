@@ -1,7 +1,5 @@
 ;;; package --- Initializes my magit settings.
-
 ;;; Commentary:
-
 ;;; Code:
 (use-package magit
   :ensure t
