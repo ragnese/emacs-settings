@@ -23,6 +23,10 @@
 
   (evil-ex-define-cmd "Bd" #'delete-buffer-preserve-split)
 
+  ;; Add ex-command for magit
+  (when (fboundp #'magit-status)
+    (evil-ex-define-cmd "git" 'magit-status))
+
   ;; TODO - change these to only work in cargo-minor-mode
   ;; Define some cargo commands for Rust mode
   (when (fboundp #'cargo-minor-mode)
@@ -38,6 +42,7 @@
     (setq which-key-allow-evil-operators t)
     (setq which-key-show-operator-state-maps t))
 
+  ;; FIXME - this doesn't work and I don't know why
   ;; Diminish the mode-line for undo-tree, which is a dep of evil-mode
   (when (fboundp #'diminish)
     (diminish 'undo-tree-mode)))
@@ -56,10 +61,7 @@
 (use-package evil-magit
   :after (evil magit)
   :ensure t
-  :config
-  ;; Add ex-command for magit
-  (when (fboundp #'magit-status)
-    (evil-ex-define-cmd "git" 'magit-status)))
+  :config)
 
 
 ;; Add evil-smartparens if smartparens is installed
