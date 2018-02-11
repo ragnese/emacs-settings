@@ -1,56 +1,18 @@
 ;;; package --- Initializes my Evil settings.
-
-;;; Commentary:
-
+;;; Commentary: Vim all the things! This must be loaded after init-rust and
+;;;             init-which-key.
 ;;; Code:
-
-;; Function to make ESC actually escape more things (like C-g)
-;; For use with evil mode
-(defun minibuffer-keyboard-quit ()
-  "Abort recursive edit.
-In Delete Selection mode, if the mark is active, just deactivate it;
-then it takes a second \\[keyboard-quit] to abort the minibuffer."
-  (interactive)
-  (if (and delete-selection-mode transient-mark-mode mark-active)
-      (setq deactivate-mark  t)
-    (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
-    (abort-recursive-edit)))
-
 ;; Evil mode
 (use-package evil
+  :init
+  (setq evil-want-C-u-scroll t)
+  (setq evil-want-integration nil)
   :ensure t
   :config
   (evil-mode 1)
 
-  ;; Add Vim bindings to many modes
-  (use-package evil-collection
-    :ensure t
-    ;; This enables vim bindings in minibuffer
-    ;:custom (evil-collection-setup-minibuffer t)
-    :init (evil-collection-init))
-
   ;; Make '_' count as part of a word (like real Vim, unlike Emacs)
   (modify-syntax-entry ?_ "w")
-
-  ;; Fix C-u not scrolling up - evil-want-C-u-scroll seems to not work
-  ;(setq evil-want-C-u-scroll t)
-  (define-key global-map (kbd "M-u") #'universal-argument)
-  (define-key universal-argument-map (kbd "M-u") #'universal-argument-more)
-  (define-key evil-insert-state-map (kbd "C-u") 'evil-scroll-up)
-  (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
-  (define-key evil-visual-state-map (kbd "C-u") 'evil-scroll-up)
-  (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
-
-  ;; Add evil-smartparens if smartparens is installed
-  (when (fboundp #'smartparens-mode)
-    (use-package evil-smartparens
-      :ensure t
-      :config
-      (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
-      ;; If we use smartparens in non-lispy languages, it's probably
-      ;; better to only enable evil-smartparens for specific languages.
-      ;(add-hook 'clojure-mode-hook #'evil-smartparens-mode)
-      ))
 
   ;; Add command to delete buffer without closing split
   (evil-define-command delete-buffer-preserve-split ()
@@ -61,16 +23,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
   (evil-ex-define-cmd "Bd" #'delete-buffer-preserve-split)
 
-  ;; Use projectile like Vim's CtrlP plugin
-  (when (fboundp 'projectile-mode)
-    (define-key evil-normal-state-map (kbd "C-p") #'projectile-find-file))
-
-  ;; Add evil-magit and create ex-command for magit-status
-  (when (fboundp 'magit-status)
-    (use-package evil-magit
-      :ensure t)
+  ;; Add ex-command for magit
+  (when (fboundp #'magit-status)
     (evil-ex-define-cmd "git" 'magit-status))
 
+  ;; TODO - change these to only work in cargo-minor-mode
   ;; Define some cargo commands for Rust mode
   (when (fboundp #'cargo-minor-mode)
     (evil-ex-define-cmd "build" #'cargo-process-build)
@@ -79,20 +36,50 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     (evil-ex-define-cmd "fmt" #'cargo-process-fmt)
     (evil-ex-define-cmd "test" #'cargo-process-test))
 
+  ;; TODO - Maybe move these to which-key's init?
   ;; Allow evil operator hints in which-key
   (when (fboundp #'which-key-mode)
     (setq which-key-allow-evil-operators t)
     (setq which-key-show-operator-state-maps t))
 
+  ;; FIXME - this doesn't work and I don't know why
   ;; Diminish the mode-line for undo-tree, which is a dep of evil-mode
   (when (fboundp #'diminish)
-    (diminish 'undo-tree-mode))
+    (diminish 'undo-tree-mode)))
 
-  ;; Vim-like search highlighting
-  (use-package evil-search-highlight-persist
-    :ensure t
-    :config
-    (global-evil-search-highlight-persist t)))
+
+;; Add Vim bindings to many modes
+(use-package evil-collection
+  :after evil
+  :ensure t
+  ;; This enables vim bindings in minibuffer
+  ;:custom (evil-collection-setup-minibuffer t)
+  :config (evil-collection-init))
+
+
+;; Add evil-magit
+(use-package evil-magit
+  :after (evil magit)
+  :ensure t
+  :config)
+
+
+;; Add evil-smartparens if smartparens is installed
+(use-package evil-smartparens
+  :after (evil smartparents)
+  :ensure t
+  :config
+  (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
+  ;; If we use smartparens in non-lispy languages, it's probably
+  ;; better to only enable evil-smartparens for specific languages.
+  )
+
+
+;; Vim-like search highlighting
+(use-package evil-search-highlight-persist
+  :ensure t
+  :config (global-evil-search-highlight-persist t))
+
 
 (provide 'init-evil)
 ;;; init-evil ends here

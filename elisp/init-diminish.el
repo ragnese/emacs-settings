@@ -1,7 +1,5 @@
 ;;; package --- Initializes my Diminish settings.
-
 ;;; Commentary:
-
 ;;; Code:
 (use-package diminish
   :ensure t

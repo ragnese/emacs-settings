@@ -12,6 +12,7 @@
 
 (use-package smartparens
   :ensure t
+  :diminish
   :config
   (add-hook 'lisp-mode-hook #'smartparens-strict-mode)
   (add-hook 'scheme-mode-hook #'smartparens-strict-mode)

@@ -1,7 +1,5 @@
 ;;; package --- Initializes my Rust settings.
-
 ;;; Commentary:
-
 ;;; Code:
 (use-package rust-mode
   :ensure t
@@ -12,6 +10,7 @@
     (add-hook 'rust-mode-hook #'column-enforce-mode)))
 
 (use-package racer
+  :after rust-mode
   :ensure t
   :diminish racer-mode
   :config
@@ -23,14 +22,14 @@
   (when (eq window-system 'ns)
     (setq racer-rust-src-path (concat (getenv "HOME") "/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"))))
 
-
-(when (fboundp 'flycheck-mode)
-  (use-package flycheck-rust
-    :ensure t
-    :config
-    (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
+(use-package flycheck-rust
+  :after (flycheck rust-mode)
+  :ensure t
+  :config
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 (use-package cargo
+  :after rust-mode
   :ensure t
   :diminish cargo-minor-mode
   :config

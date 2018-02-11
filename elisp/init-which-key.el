@@ -1,7 +1,5 @@
 ;;; package --- Initializes my which-key settings.
-
 ;;; Commentary:
-
 ;;; Code:
 (use-package which-key
   :ensure t

@@ -1,7 +1,5 @@
 ;;; package --- Initializes my Geiser settings.
-
 ;;; Commentary:
-
 ;;; Code:
 (use-package geiser
   :init

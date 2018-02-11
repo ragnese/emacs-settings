@@ -1,7 +1,5 @@
 ;;; package --- Initializes my macOS-specific settings.
-
 ;;; Commentary:
-
 ;;; Code:
 ;; Make sure Emacs's PATH matches shell's on macOS
 (use-package exec-path-from-shell
