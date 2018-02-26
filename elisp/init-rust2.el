@@ -11,16 +11,6 @@
     (setq column-enforce-column 100)
     (add-hook 'rust-mode-hook #'column-enforce-mode)))
 
-(use-package lsp-mode
-  :ensure t
-  :init
-  (add-hook 'rust-mode-hook #'lsp-mode)
-  :config
-  (setq lsp-response-timeout 25)
-  (use-package lsp-flycheck
-    :ensure f ; comes with lsp-mode
-    :after flycheck))
-
 (use-package lsp-rust
   :ensure t
   :after lsp-mode)

@@ -3,7 +3,6 @@
 ;;; Code:
 (use-package flycheck
   :ensure t
-  :defer t
   :config
   (add-hook 'prog-mode-hook 'global-flycheck-mode)
   (setq flycheck-check-syntax-automatically '(save mode-enabled)))

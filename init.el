@@ -87,6 +87,7 @@
 (require 'init-which-key)
 (require 'init-org)
 ;; Language specific stuff
+(require 'init-lsp)
 (require 'init-auctex)
 (require 'init-python)
 (require 'init-elixir)
@@ -95,6 +96,7 @@
 (require 'init-lisps)
 (require 'init-rust)
 ;(require 'init-rust2) ; experiment with RLS
+(require 'init-php)
 ;; Vim - NOTE: Make sure it's after which-key and init-rust
 (require 'init-evil)
 ;; Use for keybindings - Should load last to not get overwritten
