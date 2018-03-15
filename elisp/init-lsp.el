@@ -11,13 +11,8 @@
 
 (use-package lsp-ui
   :ensure t
-  :disabled
   :after lsp-mode
-  :hook (lsp-mode . lsp-ui-mode))
-
-(use-package lsp-flycheck
-  :ensure f ; comes with lsp-mode
-  :after (lsp-mode flycheck))
+  :hook (lsp-mode . (lambda () (lsp-ui-flycheck-enable 1))))
 
 (use-package company-lsp
   :ensure t
