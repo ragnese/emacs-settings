@@ -42,6 +42,9 @@
 ;; Paste where mouse cursor is (nil, default) or where point is (t)
 ;(setq mouse-yank-at-point nil)
 
+;; Turning this off speeds up cursor movement. I don't know what it does...
+(setq auto-window-vscroll nil)
+
 ;; When using built-in customize options, put the results into custom.el
 ;; instead of init.el. Then load that file from here.
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
