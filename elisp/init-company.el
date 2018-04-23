@@ -12,11 +12,7 @@
   ;; Reduce the number of characters before company kicks in
   (setq company-minimum-prefix-length 1)
   ;; Makes the popup window have nicer formatting
-  (setq company-tooltip-align-annotations t)
-  ;; Nicer keybindings for navigating completions
-  (define-key company-active-map (kbd "<RET>") #'company-complete)
-  (define-key company-active-map (kbd "C-n") #'company-select-next)
-  (define-key company-active-map (kbd "C-p") #'company-select-previous))
+  (setq company-tooltip-align-annotations t))
 
 (provide 'init-company)
 ;;; init-company.el ends here
