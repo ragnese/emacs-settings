@@ -45,6 +45,9 @@
 ;; No auto-backups (if I want old versions of a file, I'll use VC)
 (setq make-backup-files nil)
 
+;; Turning this off speeds up cursor movement. I don't know what it does...
+(setq auto-window-vscroll nil)
+
 ;; When using built-in customize options, put the results into custom.el
 ;; instead of init.el. Then load that file from here.
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -90,6 +93,7 @@
 (require 'init-which-key)
 (require 'init-org)
 ;; Language specific stuff
+(require 'init-lsp)
 (require 'init-auctex)
 (require 'init-python)
 (require 'init-elixir)
@@ -98,6 +102,7 @@
 (require 'init-lisps)
 (require 'init-rust)
 ;(require 'init-rust2) ; experiment with RLS
+(require 'init-php)
 ;; Vim - NOTE: Make sure it's after which-key and init-rust
 (require 'init-evil)
 ;; Use for keybindings - Should load last to not get overwritten
