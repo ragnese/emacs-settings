@@ -34,7 +34,23 @@
           "M-<left>" #'sp-backward-barf-sexp))
 
        (when (fboundp #'treemacs-projectile-toggle)
-         (general-define-key "<f8>" #'treemacs-projectile-toggle))))
+         (general-define-key "<f8>" #'treemacs-projectile-toggle))
+
+       ;; Using minor-mode definer is a workaround because some binding don't
+       ;; work until a state change in Evil mode.
+       (general-define-key :definer 'minor-mode
+                           :states 'normal
+                           :keymaps 'dired-mode
+                           "RET" #'dired-find-alternate-file)
+
+       ;; Using minor-mode definer is a workaround because some binding don't
+       ;; work until a state change in Evil mode.
+       (general-define-key :definer 'minor-mode
+                           :states 'normal
+                           :keymaps 'dired-mode
+                           "^" (lambda ()
+                                 (interactive)
+                                 (find-alternate-file "..")))))
 
 (provide 'init-general)
 ;;; init-general ends here
