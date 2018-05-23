@@ -8,7 +8,7 @@
   (setq treemacs-follow-after-init          t
         treemacs-width                      35
         treemacs-indentation                2
-        treemacs-git-integration            t
+        treemacs-git-mode                   'simple
         treemacs-collapse-dirs              0
         treemacs-silent-refresh             t
         treemacs-change-root-without-asking nil
