@@ -45,6 +45,9 @@
 ;; Turning this off speeds up cursor movement. I don't know what it does...
 (setq auto-window-vscroll nil)
 
+;; Stop making stupid backup files
+(setq make-backup-files nil)
+
 ;; When using built-in customize options, put the results into custom.el
 ;; instead of init.el. Then load that file from here.
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -100,6 +103,7 @@
 (require 'init-rust)
 ;(require 'init-rust2) ; experiment with RLS
 (require 'init-php)
+(require 'init-swift)
 ;; Vim - NOTE: Make sure it's after which-key and init-rust
 (require 'init-evil)
 ;; Use for keybindings - Should load last to not get overwritten
@@ -107,3 +111,4 @@
 
 (provide 'init)
 ;;; init.el ends here
+(put 'dired-find-alternate-file 'disabled nil)
