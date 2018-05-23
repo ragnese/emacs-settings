@@ -54,6 +54,7 @@
   :ensure t
   ;; This enables vim bindings in minibuffer
   ;:custom (evil-collection-setup-minibuffer t)
+  :custom (evil-collection-company-use-tng nil)
   :config (evil-collection-init))
 
 

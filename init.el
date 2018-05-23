@@ -42,6 +42,9 @@
 ;; Paste where mouse cursor is (nil, default) or where point is (t)
 ;(setq mouse-yank-at-point nil)
 
+;; No auto-backups (if I want old versions of a file, I'll use VC)
+(setq make-backup-files nil)
+
 ;; Turning this off speeds up cursor movement. I don't know what it does...
 (setq auto-window-vscroll nil)
 
