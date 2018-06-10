@@ -5,7 +5,7 @@
  'org-babel-load-languages
  '((scheme . t)
    (python . t)
-   (sh . t)))
+   (shell . t)))
 
 (setq org-src-fontify-natively t)
 
