@@ -21,7 +21,7 @@
   :hook (php-mode . phpcbf-enable-on-save)
   :config
   (custom-set-variables
-   ;'(phpcbf-executable "/usr/local/bin/phpcbf")
+   '(phpcbf-executable "~/.config/composer/vendor/bin/phpcbf")
    '(phpcbf-standard "PSR2")))
 
 (provide 'init-php)
