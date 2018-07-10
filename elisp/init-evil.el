@@ -67,7 +67,7 @@
 
 ;; Add evil-smartparens if smartparens is installed
 (use-package evil-smartparens
-  :after (evil smartparents)
+  :after (evil smartparens)
   :ensure t
   :config
   (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
