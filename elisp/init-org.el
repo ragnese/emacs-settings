@@ -3,11 +3,10 @@
 ;;; Code:
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((scheme . t)
+ '((emacs-lisp . t)
+   (scheme . t)
    (python . t)
    (shell . t)))
-
-(setq org-src-fontify-natively t)
 
 (provide 'init-org)
 ;;; init-org.el ends here
