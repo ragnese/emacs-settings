@@ -14,10 +14,14 @@
   :ensure t
   :diminish
   :config
-  (add-hook 'lisp-mode-hook #'smartparens-strict-mode)
-  (add-hook 'scheme-mode-hook #'smartparens-strict-mode)
-  (add-hook 'emacs-lisp-mode-hook #'smartparens-strict-mode)
-  (add-hook 'clojure-mode-hook #'smartparens-strict-mode))
+  (let ((modes (list #'list-mode
+                     #'scheme-mode
+                     #'emacs-lisp-mode
+                     #'clojure-mode)))
+    (dolist (mode modes)
+      (add-hook (intern (concat (symbol-name mode) "-hook"))
+                #'smartparens-strict-mode)
+      (sp-local-pair mode "'" nil :actions nil))))
 
 (provide 'init-lisps)
 ;;; init-lisps.el ends here
