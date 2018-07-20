@@ -74,6 +74,7 @@
 
 ;; This must be first, since my use-package declarations depend on it
 (require 'init-diminish)
+(require 'init-ibuffer)
 ;; Color theme(s)
 (require 'init-theme)
 ;; Fuzzy finding things (files, buffers, etc)

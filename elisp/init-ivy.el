@@ -3,7 +3,7 @@
 ;;; Code:
 (use-package ivy
   :ensure t
-  :diminish ivy-mode
+  :diminish
   :config
   (ivy-mode 1)
   (counsel-mode 1)

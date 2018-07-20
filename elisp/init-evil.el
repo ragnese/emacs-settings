@@ -69,6 +69,7 @@
 (use-package evil-smartparens
   :after (evil smartparens)
   :ensure t
+  :diminish
   :config
   (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
   ;; If we use smartparens in non-lispy languages, it's probably
