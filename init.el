@@ -108,6 +108,7 @@
 ;(require 'init-rust2) ; experiment with RLS
 (require 'init-php)
 (require 'init-swift)
+(require 'init-javascript)
 ;; Vim - NOTE: Make sure it's after which-key and init-rust
 (require 'init-evil)
 ;; Use for keybindings - Should load last to not get overwritten
