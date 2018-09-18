@@ -106,6 +106,8 @@
 ;; Which-key gives pop up hints for keybindings
 (require 'init-which-key)
 (require 'init-org)
+;; Tries to guess the correct indent rules for a file
+(require 'init-dtrt-indent)
 ;; Language specific stuff
 (require 'init-lsp)
 (require 'init-auctex)
