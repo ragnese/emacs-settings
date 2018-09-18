@@ -1,11 +1,12 @@
 ;;; package --- Initializes my Evil settings.
-;;; Commentary: Vim all the things! This must be loaded after init-rust and
-;;;             init-which-key.
+;;; Commentary:
+;;; Vim all the things! This must be loaded after init-rust and
+;;; init-which-key.
 ;;; Code:
-;; Evil mode
 (use-package evil
   :init
   (setq evil-want-C-u-scroll t)
+  (setq evil-want-keybinding nil)
   (setq evil-want-integration nil)
   :ensure t
   :config
