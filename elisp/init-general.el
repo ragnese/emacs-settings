@@ -37,8 +37,8 @@
        "C-<left>" #'sp-backward-slurp-sexp
        "M-<left>" #'sp-backward-barf-sexp))
 
-    (when (fboundp #'treemacs-projectile-toggle)
-      (general-define-key "<f8>" #'treemacs-projectile-toggle))
+    (when (fboundp #'treemacs)
+      (general-define-key "<f8>" #'treemacs))
 
     ;; Using minor-mode definer is a workaround because some binding don't
     ;; work until a state change in Evil mode.

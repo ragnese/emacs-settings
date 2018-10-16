@@ -1,6 +1,16 @@
+;; -*- lexical-binding: t -*-
+
 ;;; package --- Emacs init.el
 ;;; Commentary:
 ;;; Code:
+(setq debug-on-error t)
+
+;; Tweak garbage collection
+(let ((normal-gc-cons-threshold (* 20 1024 1024))
+      (init-gc-cons-threshold (* 128 1024 1024)))
+  (setq gc-cons-threshold init-gc-cons-threshold)
+  (add-hook 'emacs-startup-hook
+            (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
 
 ;; No blinking cursor
 (blink-cursor-mode 0)
@@ -96,6 +106,8 @@
 ;; Which-key gives pop up hints for keybindings
 (require 'init-which-key)
 (require 'init-org)
+;; Tries to guess the correct indent rules for a file
+(require 'init-dtrt-indent)
 ;; Language specific stuff
 (require 'init-lsp)
 (require 'init-auctex)
@@ -108,6 +120,11 @@
 ;(require 'init-rust2) ; experiment with RLS
 (require 'init-php)
 (require 'init-swift)
+(require 'init-javascript)
+(require 'init-cl)
+(require 'init-dockerfile)
+;; Manage Docker containers
+(require 'init-docker)
 ;; Vim - NOTE: Make sure it's after which-key and init-rust
 (require 'init-evil)
 ;; Use for keybindings - Should load last to not get overwritten
