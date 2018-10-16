@@ -6,6 +6,7 @@
 (use-package evil
   :init
   (setq evil-want-C-u-scroll t)
+  (setq evil-want-keybinding nil)
   (setq evil-want-integration nil)
   :ensure t
   :config
