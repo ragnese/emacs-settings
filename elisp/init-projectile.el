@@ -3,7 +3,7 @@
 ;;; Code:
 (use-package projectile
   :ensure t
-  :diminish projectile-mode
+  :diminish
   :config
   (projectile-mode 1))
 

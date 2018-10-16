@@ -3,7 +3,7 @@
 ;;; Code:
 (use-package which-key
   :ensure t
-  :diminish which-key-mode
+  :diminish
   :config
   (which-key-mode))
 
