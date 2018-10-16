@@ -121,6 +121,7 @@
 (require 'init-php)
 (require 'init-swift)
 (require 'init-javascript)
+(require 'init-cl)
 (require 'init-dockerfile)
 ;; Manage Docker containers
 (require 'init-docker)
