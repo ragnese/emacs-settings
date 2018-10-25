@@ -8,8 +8,10 @@
   :config
   (add-hook 'scheme-mode-hook #'rainbow-delimiters-mode)
   (add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
+  (add-hook 'scheme-lisp-mode-hook #'rainbow-delimiters-mode)
   (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
-  (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode))
+  (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+  (add-hook 'common-lisp-mode-hook #'rainbow-delimiters-mode))
 
 (use-package smartparens
   :ensure t
@@ -18,7 +20,8 @@
   (let ((modes (list #'list-mode
                      #'scheme-mode
                      #'emacs-lisp-mode
-                     #'clojure-mode)))
+                     #'clojure-mode
+                     #'common-lisp-mode)))
     (dolist (mode modes)
       (add-hook (intern (concat (symbol-name mode) "-hook"))
                 #'smartparens-strict-mode)

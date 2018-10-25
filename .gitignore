@@ -1,2 +1,9 @@
 *~
 \#*\#
+.cache/
+elpa/
+eshell/
+tramp
+recentf
+projectile-bookmarks.eld
+session.*
