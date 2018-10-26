@@ -116,8 +116,8 @@
 (require 'init-clojure)
 (require 'init-geiser)
 (require 'init-lisps)
-(require 'init-rust)
-;(require 'init-rust2) ; experiment with RLS
+;(require 'init-rust)
+(require 'init-rust2) ; experiment with RLS
 (require 'init-php)
 (require 'init-swift)
 (require 'init-javascript)

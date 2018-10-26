@@ -6,20 +6,18 @@
 (use-package rust-mode
   :ensure t
   :config
-  (setq rust-rustfmt-bin (concat (getenv "HOME") "/.cargo/bin/rustfmt"))
-  (when (fboundp 'column-enforce-mode)
-    (setq column-enforce-column 100)
-    (add-hook 'rust-mode-hook #'column-enforce-mode)))
+  (setq rust-format-on-save t))
 
 (use-package lsp-rust
+  :requires (rust-mode lsp-mode lsp-ui)
   :ensure t
-  :after lsp-mode)
+  :hook ((rust-mode . lsp-rust-enable)
+         (rust-mode . flycheck-mode)))
 
 (use-package cargo
   :ensure t
   :diminish cargo-minor-mode
-  :config
-  (add-hook 'rust-mode-hook #'cargo-minor-mode))
+  :hook (rust-mode . cargo-minor-mode))
 
 (use-package toml-mode
   :ensure t)
