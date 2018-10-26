@@ -6,6 +6,7 @@
 (use-package rainbow-delimiters
   :ensure t
   :config
+  (add-hook 'scheme-mode-hook #'rainbow-delimiters-mode)
   (add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
   (add-hook 'scheme-lisp-mode-hook #'rainbow-delimiters-mode)
   (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
@@ -16,7 +17,7 @@
   :ensure t
   :diminish
   :config
-  (let ((modes (list #'list-mode
+  (let ((modes (list #'lisp-mode
                      #'scheme-mode
                      #'emacs-lisp-mode
                      #'clojure-mode
