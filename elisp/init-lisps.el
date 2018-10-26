@@ -16,7 +16,7 @@
   :ensure t
   :diminish
   :config
-  (let ((modes (list #'list-mode
+  (let ((modes (list #'lisp-mode
                      #'scheme-mode
                      #'emacs-lisp-mode
                      #'clojure-mode
