@@ -1,6 +1,4 @@
-;; -*- lexical-binding: t -*-
-
-;;; package --- Emacs init.el
+;;; package --- Emacs init.el -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (setq debug-on-error t)
@@ -132,3 +130,4 @@
 
 (provide 'init)
 ;;; init.el ends here
+(put 'dired-find-alternate-file 'disabled nil)
