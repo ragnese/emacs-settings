@@ -1,4 +1,4 @@
-;;; package --- Useful functions
+;;; package --- Useful functions -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 ;; Function to install required package if it doesn't already exist
@@ -35,7 +35,7 @@
 (defun add-to-exec-path (path)
   "Add PATH to 'exec-path'."
   (interactive "D:")
-  (setq exec-path (append exec-path '(path))))
+  (setq exec-path (append exec-path (list path))))
 
 
 (defun new-project ()
@@ -44,8 +44,10 @@ Requires magit and projectile packages."
   (interactive)
   (let ((project-dir (expand-file-name
                       (read-directory-name "New project root:"))))
-    (magit-init project-dir)
-    (projectile-add-known-project project-dir)
+    (when (fboundp 'magit-init)
+        (magit-init project-dir))
+    (when (fboundp 'projectile-add-known-project)
+        (projectile-add-known-project project-dir))
     (setq default-directory project-dir)))
 
 
