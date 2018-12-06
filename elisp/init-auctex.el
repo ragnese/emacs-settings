@@ -1,4 +1,4 @@
-;;; package --- Initializes my Auctex settings.
+;;; package --- Initializes my Auctex settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package tex

@@ -1,8 +1,9 @@
-;;; package --- Initializes my Geiser settings.
+;;; package --- Initializes my Geiser settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package geiser
   :init
+  (defvar geiser-active-implementations)
   (setq geiser-active-implementations '(racket guile))
   :ensure t)
 

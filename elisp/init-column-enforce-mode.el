@@ -1,5 +1,6 @@
-;;; package --- Initializes my column-enforce-mode settings.
-;;; Commentary: Highlight or otherwise annoy us when lines are too long
+;;; package --- Initializes my column-enforce-mode settings. -*- lexical-binding: t; -*-
+;;; Commentary:
+;;; Highlight or otherwise annoy us when lines are too long
 ;;; Code:
 (use-package column-enforce-mode
   :ensure t

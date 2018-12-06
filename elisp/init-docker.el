@@ -1,4 +1,4 @@
-;;; package --- Initializes my settings for Docker
+;;; package --- Initializes my settings for Docker -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

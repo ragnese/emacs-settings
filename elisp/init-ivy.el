@@ -1,4 +1,4 @@
-;;; package --- Initializes my Ivy settings.
+;;; package --- Initializes my Ivy settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package ivy
@@ -11,10 +11,6 @@
 
   ;; Do not show "./" and "../" in the `counsel-find-file' completion list
   (setq ivy-extra-directories nil) ; default value: ("../" "./")
-
-  ;; Let ESC quite the ivy minibuffer.
-  (require 'custom-functions)
-  (define-key counsel-mode-map [escape] #'minibuffer-keyboard-quit)
 
   ;; Function kills buffer in ivy buffer list
   (defun local/ivy-kill-buffer ()

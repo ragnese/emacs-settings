@@ -1,4 +1,4 @@
-;;; package --- Initializes my JavaScript settings.
+;;; package --- Initializes my JavaScript settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package nodejs-repl
@@ -14,7 +14,8 @@
   :after js2-mode
   :hook (js2-mode . tide-setup)
   :config
-  (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append))
+  (when (fboundp 'flycheck-add-next-checker)
+    (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)))
 
 (use-package mocha
   :ensure t

@@ -1,10 +1,11 @@
-;;; package --- Initializes my flycheck settings.
-;;; Commentary: Syntax checking
+;;; package --- Initializes my flycheck settings. -*- lexical-binding: t; -*-
+;;; Commentary:
+;;; Syntax checking
 ;;; Code:
 (use-package flycheck
   :ensure t
+  :hook (prog-mode . global-flycheck-mode)
   :config
-  (add-hook 'prog-mode-hook 'global-flycheck-mode)
   (setq flycheck-check-syntax-automatically '(save mode-enabled)))
 
 (provide 'init-flycheck)

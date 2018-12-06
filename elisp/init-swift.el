@@ -1,4 +1,4 @@
-;;; package --- Initializes my Swift settings.
+;;; package --- Initializes my Swift settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package swift-mode

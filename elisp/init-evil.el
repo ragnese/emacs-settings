@@ -1,4 +1,4 @@
-;;; package --- Initializes my Evil settings.
+;;; package --- Initializes my Evil settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Vim all the things! This must be loaded after init-rust and
 ;;; init-which-key.
@@ -35,18 +35,13 @@
     (evil-ex-define-cmd "check" #'cargo-process-check)
     (evil-ex-define-cmd "clippy" #'cargo-process-clippy)
     (evil-ex-define-cmd "fmt" #'cargo-process-fmt)
-    (evil-ex-define-cmd "test" #'cargo-process-test))
+    (evil-ex-define-cmd "test" #'cargo-process-test)))
 
-  ;; TODO - Maybe move these to which-key's init?
-  ;; Allow evil operator hints in which-key
-  (when (fboundp #'which-key-mode)
-    (setq which-key-allow-evil-operators t)
-    (setq which-key-show-operator-state-maps t))
 
-  ;; FIXME - this doesn't work and I don't know why
-  ;; Diminish the mode-line for undo-tree, which is a dep of evil-mode
-  (when (fboundp #'diminish)
-    (diminish 'undo-tree-mode)))
+;; Diminish the mode-line for undo-tree, which is a dep of evil-mode
+(use-package undo-tree
+  :ensure nil
+  :diminish)
 
 
 ;; Add Vim bindings to many modes

@@ -1,4 +1,4 @@
-;;; package --- Initializes my Clojure settings.
+;;; package --- Initializes my Clojure settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package clojure-mode

@@ -1,4 +1,4 @@
-;;; package --- Initializes my dtrt settings.
+;;; package --- Initializes my dtrt settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package dtrt-indent

@@ -1,4 +1,4 @@
-;;; package --- Initializes my Org mode settings.
+;;; package --- Initializes my Org mode settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (org-babel-do-load-languages

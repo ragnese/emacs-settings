@@ -1,4 +1,4 @@
-;;; package --- Initializes my Language Server settings.
+;;; package --- Initializes my Language Server settings. -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -12,7 +12,9 @@
 (use-package lsp-ui
   :ensure t
   :after lsp-mode
-  :hook (lsp-mode . (lambda () (lsp-ui-flycheck-enable 1))))
+  :hook (lsp-mode . (lambda ()
+                      (when (fboundp 'lsp-ui-flycheck-enable)
+                        (lsp-ui-flycheck-enable 1)))))
 
 (use-package company-lsp
   :ensure t

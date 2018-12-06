@@ -1,4 +1,4 @@
-;;; package --- Initializes my iBuffer settings.
+;;; package --- Initializes my iBuffer settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package ibuffer-vc

@@ -1,4 +1,4 @@
-;;; package --- Initializes my settings for Dockerfile
+;;; package --- Initializes my settings for Dockerfile -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

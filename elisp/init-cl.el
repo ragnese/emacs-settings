@@ -1,4 +1,4 @@
-;;; package --- Initializes my settings for Common Lisp
+;;; package --- Initializes my settings for Common Lisp -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
