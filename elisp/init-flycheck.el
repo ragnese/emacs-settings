@@ -1,4 +1,4 @@
-;;; package --- Initializes my flycheck settings. -*- lexical-binding: t; -*-
+;;; init-flycheck.el --- Initializes my flycheck settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Syntax checking
 ;;; Code:

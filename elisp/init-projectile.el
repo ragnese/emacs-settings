@@ -1,4 +1,4 @@
-;;; package --- Initializes my Projectile settings. -*- lexical-binding: t; -*-
+;;; init-projectile.el --- Initializes my Projectile settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package projectile

@@ -1,4 +1,4 @@
-;;; package --- Initializes my Rust settings. -*- lexical-binding: t; -*-
+;;; init-rust.el --- Initializes my Rust settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package rust-mode

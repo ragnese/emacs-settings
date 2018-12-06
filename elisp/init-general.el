@@ -1,4 +1,4 @@
-;;; package --- Initializes my General settings. -*- lexical-binding: t; -*-
+;;; init-general.el --- Initializes my General settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package general

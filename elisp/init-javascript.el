@@ -1,7 +1,8 @@
-;;; package --- Initializes my JavaScript settings. -*- lexical-binding: t; -*-
+;;; init-javascript.el --- Initializes my JavaScript settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package nodejs-repl
+  :commands nodejs-repl
   :ensure t)
 
 (use-package js2-mode
@@ -19,6 +20,7 @@
 
 (use-package mocha
   :ensure t
+  :after js2-mode
   :custom
   (mocha-options "--recursive")
   (mocha-reporter "nyan"))

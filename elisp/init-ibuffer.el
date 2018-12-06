@@ -1,12 +1,11 @@
-;;; package --- Initializes my iBuffer settings. -*- lexical-binding: t; -*-
+;;; init-ibuffer.el --- Initializes my ibuffer settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package ibuffer-vc
   :ensure t
+  :hook (ibuffer . (lambda ()
+                     (ibuffer-vc-set-filter-groups-by-vc-root)))
   :config
-  (add-hook 'ibuffer-hook
-            (lambda ()
-              (ibuffer-vc-set-filter-groups-by-vc-root)))
   (setq ibuffer-formats
         '((mark modified read-only vc-status-mini " "
                 (name 18 18 :left :elide)

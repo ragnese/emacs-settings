@@ -1,4 +1,4 @@
-;;; package --- Initializes my Common Lisp settings
+;;; init-slime.el --- Initializes my Common Lisp settings
 ;;; Commentary:
 ;;; Code:
 (use-package slime

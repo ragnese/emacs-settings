@@ -1,9 +1,9 @@
-;;; package --- Initializes my treemacs settings. -*- lexical-binding: t; -*-
+;;; init-treemacs.el --- Initializes my treemacs settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package treemacs
   :ensure t
-  :defer t
+  :commands treemacs
   :config
   (setq treemacs-collapse-dirs              0
         treemacs-silent-refresh             t
@@ -20,8 +20,7 @@
 
 (use-package treemacs-evil
   :after (treemacs evil)
-  :ensure t
-  :demand t)
+  :ensure t)
 
 
 (use-package treemacs-projectile

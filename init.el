@@ -1,7 +1,7 @@
 ;;; init.el --- Emacs init -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
-(setq debug-on-error t)
+(setq debug-on-error nil)
 
 ;; Tweak garbage collection
 (let ((normal-gc-cons-threshold (* 20 1024 1024))
@@ -128,7 +128,6 @@
 (use-package init-docker)
 ;; Vim - NOTE: Make sure it's after which-key and init-rust
 (use-package init-evil)
-;(require 'init-evil)
 ;; Use for keybindings - Should load last to not get overwritten
 (use-package init-general)
 

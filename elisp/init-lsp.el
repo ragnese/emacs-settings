@@ -1,11 +1,12 @@
-;;; package --- Initializes my Language Server settings. -*- lexical-binding: t; -*-
+;;; init-lsp.el --- Initializes my Language Server settings. -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
 ;;; Code:
 (use-package lsp-mode
-  :diminish
   :ensure t
+  :defer t
+  :diminish
   :config
   (setq lsp-response-timeout 25))
 

@@ -1,11 +1,12 @@
-;;; package --- Initializes my PHP settings. -*- lexical-binding: t; -*-
+;;; init-php.el --- Initializes my PHP settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package php-mode
+  :mode "\\.php\\'"
   :ensure t)
 
 (use-package lsp-php
-  :after (php-mode lsp-mode)
+  :after php-mode
   :ensure t
   :hook (php-mode . lsp-php-enable)
   :config

@@ -1,4 +1,4 @@
-;;; package --- Initializes my Company settings. -*- lexical-binding: t; -*-
+;;; init-company.el --- Initializes my Company settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 ;; Company mode for completions

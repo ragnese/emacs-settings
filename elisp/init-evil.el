@@ -48,8 +48,7 @@
 ;; Add evil-magit
 (use-package evil-magit
   :after (evil magit)
-  :ensure t
-  :config)
+  :ensure t)
 
 
 ;; Add evil-smartparens if smartparens is installed
@@ -57,11 +56,7 @@
   :after (evil smartparens)
   :ensure t
   :diminish
-  :config
-  (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
-  ;; If we use smartparens in non-lispy languages, it's probably
-  ;; better to only enable evil-smartparens for specific languages.
-  )
+  :hook smartparens-enabled-hook)
 
 
 ;; Vim-like search highlighting

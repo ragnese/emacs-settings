@@ -1,4 +1,4 @@
-;;; package --- Initializes my Diminish settings. -*- lexical-binding: t; -*-
+;;; init-diminish.el --- Initializes my Diminish settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package diminish

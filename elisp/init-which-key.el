@@ -1,4 +1,4 @@
-;;; package --- Initializes my which-key settings. -*- lexical-binding: t; -*-
+;;; init-which-key.el --- Initializes my which-key settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package which-key

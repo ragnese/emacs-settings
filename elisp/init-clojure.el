@@ -1,7 +1,8 @@
-;;; package --- Initializes my Clojure settings. -*- lexical-binding: t; -*-
+;;; init-clojure.el --- Initializes my Clojure settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package clojure-mode
+  :mode "\\.clj[sc]\\'"
   :ensure t)
 
 (use-package cider

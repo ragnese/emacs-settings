@@ -1,4 +1,4 @@
-;;; package --- Initializes my column-enforce-mode settings. -*- lexical-binding: t; -*-
+;;; init-column-enforce-mode.el --- Initializes my column-enforce-mode settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Highlight or otherwise annoy us when lines are too long
 ;;; Code:

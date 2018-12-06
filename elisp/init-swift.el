@@ -1,8 +1,9 @@
-;;; package --- Initializes my Swift settings. -*- lexical-binding: t; -*-
+;;; init-swift.el --- Initializes my Swift settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package swift-mode
-  :ensure t)
+  :ensure t
+  :mode "\\.swift\\'")
 
 (use-package flycheck-swift
   :after (flycheck swift-mode)
@@ -13,7 +14,7 @@
   (setq flycheck-swift-target "arm64-apple-ios11"))
 
 (use-package company-sourcekit
-  :after (swift-mode)
+  :after swift-mode
   :ensure t
   :config
   (add-to-list 'company-backends 'company-sourcekit))

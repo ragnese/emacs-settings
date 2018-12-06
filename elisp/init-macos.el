@@ -1,4 +1,4 @@
-;;; package --- Initializes my macOS-specific settings. -*- lexical-binding: t; -*-
+;;; init-macos.el --- Initializes my macOS-specific settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 ;; Make sure Emacs's PATH matches shell's on macOS
