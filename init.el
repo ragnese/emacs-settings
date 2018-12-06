@@ -1,4 +1,4 @@
-;;; package --- Emacs init.el -*- lexical-binding: t; -*-
+;;; init.el --- Emacs init -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (setq debug-on-error t)
@@ -69,7 +69,7 @@
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
 ;; For require-package
-(require 'custom-functions)
+(require 'custom-functions "~/.emacs.d/elisp/custom-functions.el")
 
 ;; Package management stuff
 (require 'package)
@@ -80,53 +80,57 @@
 (eval-when-compile
   (require 'use-package))
 
+(setq use-package-compute-statistics t)
+
 ;; This must be first, since my use-package declarations depend on it
-(require 'init-diminish)
-(require 'init-ibuffer)
+(use-package init-diminish)
+(use-package init-ibuffer)
 ;; Color theme(s)
-(require 'init-theme)
+(use-package init-theme)
 ;; Fuzzy finding things (files, buffers, etc)
-(require 'init-ivy)
+(use-package init-ivy)
 ;; Project awareness
-(require 'init-projectile)
+(use-package init-projectile)
 ;; Completion
-(require 'init-company)
+(use-package init-company)
 ;; Git porcelain
-(require 'init-magit)
+(use-package init-magit)
 ;; macOS fix for PATH
-(require 'init-macos)
+(use-package init-macos)
 ;; file tree pane
-(require 'init-treemacs)
+(use-package init-treemacs)
 ;; Change font colors when lines are too long
-(require 'init-column-enforce-mode)
+(use-package init-column-enforce-mode)
 ;; Syntax checking
-(require 'init-flycheck)
+(use-package init-flycheck)
 ;; Which-key gives pop up hints for keybindings
-(require 'init-which-key)
-(require 'init-org)
+(use-package init-which-key)
+(use-package init-org)
 ;; Tries to guess the correct indent rules for a file
-(require 'init-dtrt-indent)
+(use-package init-dtrt-indent)
 ;; Language specific stuff
-(require 'init-lsp)
-(require 'init-auctex)
-(require 'init-python)
-(require 'init-elixir)
-(require 'init-clojure)
-(require 'init-geiser)
-(require 'init-lisps)
-;(require 'init-rust)
-(require 'init-rust2) ; experiment with RLS
-(require 'init-php)
-(require 'init-swift)
-(require 'init-javascript)
-(require 'init-cl)
-(require 'init-dockerfile)
+(use-package init-lsp)
+(use-package init-auctex)
+(use-package init-python)
+(use-package init-elixir)
+(use-package init-clojure)
+(use-package init-geiser)
+(use-package init-lisps)
+(use-package init-rust
+  :disabled)
+(use-package init-rust2) ; experiment with RLS
+(use-package init-php)
+(use-package init-swift)
+(use-package init-javascript)
+(use-package init-cl)
+(use-package init-dockerfile)
 ;; Manage Docker containers
-(require 'init-docker)
+(use-package init-docker)
 ;; Vim - NOTE: Make sure it's after which-key and init-rust
-(require 'init-evil)
+(use-package init-evil)
+;(require 'init-evil)
 ;; Use for keybindings - Should load last to not get overwritten
-(require 'init-general)
+(use-package init-general)
 
 (provide 'init)
 ;;; init.el ends here
