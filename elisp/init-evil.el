@@ -1,7 +1,6 @@
-;;; package --- Initializes my Evil settings. -*- lexical-binding: t; -*-
+;;; init-evil.el --- Initializes my Evil settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
-;;; Vim all the things! This must be loaded after init-rust and
-;;; init-which-key.
+;;; Vim all the things!
 ;;; Code:
 (use-package evil
   :init
@@ -15,27 +14,19 @@
   ;; Make '_' count as part of a word (like real Vim, unlike Emacs)
   (modify-syntax-entry ?_ "w")
 
-  ;; Add command to delete buffer without closing split
-  (evil-define-command delete-buffer-preserve-split ()
-    "Deletes the current buffer, like :bd, but doesn't close the split"
-    (let ((prev-buffer (current-buffer)))
-      (evil-prev-buffer)
-      (evil-delete-buffer prev-buffer)))
+  (when (and (fboundp 'evil-define-command)
+             (fboundp 'evil-prev-buffer)
+             (fboundp 'evil-delete-buffer)
+             (fboundp 'evil-ex-define-cmd)
+             (fboundp 'evil-set-command-properties))
+    ;; Add command to delete buffer without closing split
+    (evil-define-command delete-buffer-preserve-split ()
+      "Deletes the current buffer, like :bd, but doesn't close the split"
+      (let ((prev-buffer (current-buffer)))
+        (evil-prev-buffer)
+        (evil-delete-buffer prev-buffer)))
 
-  (evil-ex-define-cmd "Bd" #'delete-buffer-preserve-split)
-
-  ;; Add ex-command for magit
-  (when (fboundp #'magit-status)
-    (evil-ex-define-cmd "git" 'magit-status))
-
-  ;; TODO - change these to only work in cargo-minor-mode
-  ;; Define some cargo commands for Rust mode
-  (when (fboundp #'cargo-minor-mode)
-    (evil-ex-define-cmd "build" #'cargo-process-build)
-    (evil-ex-define-cmd "check" #'cargo-process-check)
-    (evil-ex-define-cmd "clippy" #'cargo-process-clippy)
-    (evil-ex-define-cmd "fmt" #'cargo-process-fmt)
-    (evil-ex-define-cmd "test" #'cargo-process-test)))
+    (evil-ex-define-cmd "Bd" 'delete-buffer-preserve-split)))
 
 
 ;; Diminish the mode-line for undo-tree, which is a dep of evil-mode
