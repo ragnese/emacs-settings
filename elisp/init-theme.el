@@ -1,4 +1,4 @@
-;;; package --- Initializes my theme settings. -*- lexical-binding: t; -*-
+;;; init-theme.el --- Initializes my theme settings. -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 
