@@ -6,7 +6,7 @@
   :init
   (setq evil-want-C-u-scroll t)
   (setq evil-want-keybinding nil)
-  (setq evil-want-integration nil)
+  (setq evil-want-integration t)
   :ensure t
   :config
   (evil-mode 1)
@@ -39,8 +39,6 @@
 (use-package evil-collection
   :after evil
   :ensure t
-  ;; This enables vim bindings in minibuffer
-  ;:custom (evil-collection-setup-minibuffer t)
   :custom (evil-collection-company-use-tng nil)
   :config (evil-collection-init))
 
@@ -56,7 +54,7 @@
   :after (evil smartparens)
   :ensure t
   :diminish
-  :hook smartparens-enabled-hook)
+  :hook smartparens-enabled)
 
 
 ;; Vim-like search highlighting
