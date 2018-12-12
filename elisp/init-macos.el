@@ -8,5 +8,9 @@
   :config
   (exec-path-from-shell-initialize))
 
+(when (eq window-system 'ns)
+  (setq mac-option-modifier 'super
+        mac-command-modifier 'meta))
+
 (provide 'init-macos)
 ;;; init-macos.el ends here
