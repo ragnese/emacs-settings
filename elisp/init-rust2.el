@@ -12,7 +12,8 @@
 (use-package lsp-rust
   :ensure t
   :hook ((rust-mode . lsp-rust-enable)
-         (rust-mode . flycheck-mode)))
+         (rust-mode . flycheck-mode))
+  :config (setq lsp-rust-rls-command '("rls")))
 
 (use-package cargo
   :ensure t
