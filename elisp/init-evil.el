@@ -11,9 +11,6 @@
   :config
   (evil-mode 1)
 
-  ;; Make '_' count as part of a word (like real Vim, unlike Emacs)
-  (modify-syntax-entry ?_ "w")
-
   (when (and (fboundp 'evil-define-command)
              (fboundp 'evil-prev-buffer)
              (fboundp 'evil-delete-buffer)
