@@ -84,6 +84,11 @@
 
 ;; This must be first, since my use-package declarations depend on it
 (use-package init-diminish)
+;; Make sure Emacs's PATH matches shell's
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (exec-path-from-shell-initialize))
 (use-package init-ibuffer)
 ;; Color theme(s)
 (use-package init-theme)
