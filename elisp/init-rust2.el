@@ -9,11 +9,10 @@
   :config
   (setq rust-format-on-save t))
 
-(use-package lsp-rust
+(use-package flycheck-rust
   :ensure t
-  :hook ((rust-mode . lsp-rust-enable)
-         (rust-mode . flycheck-mode))
-  :config (setq lsp-rust-rls-command '("rls")))
+  :after (flycheck rust-mode)
+  :hook (flycheck-mode . flycheck-rust-setup))
 
 (use-package cargo
   :ensure t

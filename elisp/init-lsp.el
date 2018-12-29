@@ -5,23 +5,24 @@
 ;;; Code:
 (use-package lsp-mode
   :ensure t
-  :defer t
+  :hook ((rust-mode) . #'lsp)
   :diminish
   :config
-  (setq lsp-response-timeout 25))
+  (setq
+   lsp-response-timeout 25
+   lsp-prefer-flymake nil))
 
 (use-package lsp-ui
   :ensure t
+  :commands lsp-ui-mode
   :after lsp-mode
-  :hook (lsp-mode . (lambda ()
-                      (when (fboundp 'lsp-ui-flycheck-enable)
-                        (lsp-ui-flycheck-enable 1)))))
+  :init (when (fboundp 'lsp-ui-flycheck-enable)
+          (lsp-ui-flycheck-enable 1)))
 
 (use-package company-lsp
   :ensure t
   :after (lsp-mode company)
-  :config
-  (push 'company-lsp company-backends))
+  :commands company-lsp)
 
 (provide 'init-lsp)
 ;;; init-lsp.el ends here
