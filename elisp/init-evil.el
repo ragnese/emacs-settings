@@ -51,7 +51,7 @@
   :after (evil smartparens)
   :ensure t
   :diminish
-  :hook smartparens-enabled)
+  :hook (smartparens-enabled . evil-smartparens-mode))
 
 
 ;; Vim-like search highlighting
