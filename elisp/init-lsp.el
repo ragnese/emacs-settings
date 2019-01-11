@@ -5,8 +5,7 @@
 ;;; Code:
 (use-package lsp-mode
   :ensure t
-  :hook ((rust-mode) . #'lsp)
-  :diminish
+  :commands lsp
   :config
   (setq
    lsp-response-timeout 25
@@ -16,8 +15,9 @@
   :ensure t
   :commands lsp-ui-mode
   :after lsp-mode
-  :init (when (fboundp 'lsp-ui-flycheck-enable)
-          (lsp-ui-flycheck-enable 1)))
+  :config
+  (setq lsp-ui-sideline-enable nil
+        lsp-ui-doc-enable nil))
 
 (use-package company-lsp
   :ensure t

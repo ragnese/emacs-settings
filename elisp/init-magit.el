@@ -9,6 +9,7 @@
   (with-eval-after-load 'evil-ex
     (when (fboundp 'evil-ex-define-cmd)
       (evil-ex-define-cmd "git" #'magit-status)))
+  (setq vc-handled-backends (delq 'Git vc-handled-backends))
   :config
   (when (fboundp 'magit-display-buffer-fullframe-status-v1)
     (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)))

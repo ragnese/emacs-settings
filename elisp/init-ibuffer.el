@@ -3,14 +3,11 @@
 ;;; Code:
 (use-package ibuffer-vc
   :ensure t
-  :hook (ibuffer . (lambda ()
-                     (ibuffer-vc-set-filter-groups-by-vc-root)))
+  :hook (ibuffer . ibuffer-vc-set-filter-groups-by-vc-root)
   :config
   (setq ibuffer-formats
         '((mark modified read-only vc-status-mini " "
                 (name 18 18 :left :elide)
-                " "
-                (size 9 -1 :right)
                 " "
                 (mode 16 16 :left :elide)
                 " "

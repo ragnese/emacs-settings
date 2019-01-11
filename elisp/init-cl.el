@@ -5,7 +5,6 @@
 ;;; Code:
 (use-package slime
   :ensure t
-  :defines (inferior-lisp-program slime-contribs)
   :commands slime
   :config
   (setq inferior-lisp-program "sbcl")

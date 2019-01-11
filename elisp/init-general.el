@@ -6,8 +6,11 @@
   :config
   (let ((my-leader "SPC"))
     ;; Globals
-    (general-define-key
-     "C-x C-b" 'ibuffer)
+    (when (fboundp #'swiper)
+      (general-define-key "C-s" #'swiper))
+
+    (when (fboundp #'treemacs)
+      (general-define-key "<f8>" #'treemacs))
 
     (when (fboundp #'evil-mode)
       (general-define-key :prefix my-leader
@@ -24,11 +27,18 @@
                           "SPC" #'evil-search-highlight-persist-remove-all))
 
     (when (fboundp #'projectile-mode)
+      (general-define-key "C-x b" #'projectile-switch-to-buffer)
+      (if (fboundp #'ivy-switch-buffer)
+          (general-define-key "C-x M-u b" #'ivy-switch-buffer)
+        (general-define-key "C-x M-u b" #'list-buffers))
+      (general-define-key "C-x C-b" #'projectile-ibuffer)
+      (general-define-key "C-x M-u C-b" #'ibuffer)
+      
       ;; Use projectile like Vim's CtrlP plugin
-      (general-define-key :keymaps 'normal (kbd "C-p") #'projectile-find-file)
+      (general-define-key :keymaps 'normal "C-p" #'projectile-find-file)
       (general-define-key :prefix my-leader
                           :keymaps 'normal
-                          "p" #'projectile-switch-project))
+                          "p" #'projectile-command-map))
 
     (when (fboundp #'smartparens-mode)
       (general-define-key
@@ -36,9 +46,6 @@
        "M-<right>" #'sp-forward-barf-sexp
        "C-<left>" #'sp-backward-slurp-sexp
        "M-<left>" #'sp-backward-barf-sexp))
-
-    (when (fboundp #'treemacs)
-      (general-define-key "<f8>" #'treemacs))
 
     ;; Using minor-mode definer is a workaround because some binding don't
     ;; work until a state change in Evil mode.

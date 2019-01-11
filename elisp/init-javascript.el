@@ -22,8 +22,7 @@
   :ensure t
   :after js2-mode
   :custom
-  (mocha-options "--recursive")
-  (mocha-reporter "nyan"))
+  (mocha-options "--recursive"))
 
 (provide 'init-javascript)
 ;;; init-javascript.el ends here

@@ -56,9 +56,6 @@
 ;; Turning this off speeds up cursor movement. I don't know what it does...
 (setq auto-window-vscroll nil)
 
-;; Stop making stupid backup files
-(setq make-backup-files nil)
-
 ;; When using built-in customize options, put the results into custom.el
 ;; instead of init.el. Then load that file from here.
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -87,9 +84,10 @@
 ;; Make sure Emacs's PATH matches shell's
 (use-package exec-path-from-shell
   :ensure t
-  :config
-  (exec-path-from-shell-initialize))
-(use-package init-ibuffer)
+  :config (exec-path-from-shell-initialize))
+(use-package init-midnight)
+(use-package init-ibuffer
+  :disabled)
 ;; Color theme(s)
 (use-package init-theme)
 ;; Fuzzy finding things (files, buffers, etc)
@@ -105,14 +103,16 @@
 ;; file tree pane
 (use-package init-treemacs)
 ;; Change font colors when lines are too long
-(use-package init-column-enforce-mode)
+(use-package init-column-enforce-mode
+  :disabled)
 ;; Syntax checking
 (use-package init-flycheck)
 ;; Which-key gives pop up hints for keybindings
 (use-package init-which-key)
 (use-package init-org)
 ;; Tries to guess the correct indent rules for a file
-(use-package init-dtrt-indent)
+(use-package init-dtrt-indent
+  :disabled)
 ;; Language specific stuff
 (use-package init-lsp)
 (use-package init-auctex)
@@ -121,9 +121,7 @@
 (use-package init-clojure)
 (use-package init-geiser)
 (use-package init-lisps)
-(use-package init-rust
-  :disabled)
-(use-package init-rust2) ; experiment with RLS
+(use-package init-rust)
 (use-package init-php)
 (use-package init-swift)
 (use-package init-javascript)

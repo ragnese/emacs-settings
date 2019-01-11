@@ -25,12 +25,10 @@
 
     (evil-ex-define-cmd "Bd" 'delete-buffer-preserve-split)))
 
-
 ;; Diminish the mode-line for undo-tree, which is a dep of evil-mode
 (use-package undo-tree
   :ensure nil
   :diminish)
-
 
 ;; Add Vim bindings to many modes
 (use-package evil-collection
@@ -39,12 +37,10 @@
   :custom (evil-collection-company-use-tng nil)
   :config (evil-collection-init))
 
-
 ;; Add evil-magit
 (use-package evil-magit
   :after (evil magit)
   :ensure t)
-
 
 ;; Add evil-smartparens if smartparens is installed
 (use-package evil-smartparens
@@ -53,12 +49,10 @@
   :diminish
   :hook (smartparens-enabled . evil-smartparens-mode))
 
-
 ;; Vim-like search highlighting
 (use-package evil-search-highlight-persist
   :ensure t
   :config (global-evil-search-highlight-persist t))
-
 
 (provide 'init-evil)
 ;;; init-evil ends here

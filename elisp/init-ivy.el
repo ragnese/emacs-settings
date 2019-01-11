@@ -4,6 +4,8 @@
 (use-package ivy
   :ensure t
   :diminish
+  :custom (ivy-height 20)
+  :init (setq ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
   :config
   (ivy-mode 1)
   (counsel-mode 1)

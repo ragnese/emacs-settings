@@ -2,24 +2,12 @@
 ;;; Commentary:
 ;;; Code:
 (use-package php-mode
+  :ensure t
   :mode "\\.php\\'"
-  :ensure t)
-
-(use-package lsp-php
-  :after php-mode
-  :ensure t
-  :hook (php-mode . lsp-php-enable)
-  :config
-  (setq lsp-php-server-install-dir "/home/rob/.local/opt/php-language-server/"))
-
-(use-package phpcbf
-  :after php-mode
-  :ensure t
-  :hook (php-mode . phpcbf-enable-on-save)
-  :config
-  (custom-set-variables
-   '(phpcbf-executable "~/.config/composer/vendor/bin/phpcbf")
-   '(phpcbf-standard "PSR2")))
+  :hook ((php-mode . php-enable-psr2-coding-style)
+         (rust-mode . (lambda ()
+                        (when (fboundp #'lsp)
+                          (lsp))))))
 
 (provide 'init-php)
 ;;; init-php.el ends here
