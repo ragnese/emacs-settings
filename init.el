@@ -110,6 +110,7 @@
 ;; Which-key gives pop up hints for keybindings
 (use-package init-which-key)
 (use-package init-org)
+(use-package init-ox-hugo)
 ;; Tries to guess the correct indent rules for a file
 (use-package init-dtrt-indent
   :disabled)
