@@ -7,9 +7,7 @@
   :ensure t
   :commands lsp
   :config
-  (setq
-   lsp-response-timeout 25
-   lsp-prefer-flymake nil))
+  (setq lsp-prefer-flymake nil))
 
 (use-package lsp-ui
   :ensure t
