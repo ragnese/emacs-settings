@@ -39,7 +39,10 @@
 (setq ring-bell-function 'ignore)
 
 ;; Highlight parentheses in programming major modes
-(add-hook 'prog-mode-hook 'show-paren-mode)
+(add-hook 'prog-mode-hook #'show-paren-mode)
+
+;; Line numbers in programming major modes
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
 ;; No tabs for indent
 (setq-default indent-tabs-mode nil)
@@ -86,8 +89,7 @@
   :ensure t
   :config (exec-path-from-shell-initialize))
 (use-package init-midnight)
-(use-package init-ibuffer
-  :disabled)
+(use-package init-ibuffer)
 ;; Color theme(s)
 (use-package init-theme)
 ;; Fuzzy finding things (files, buffers, etc)

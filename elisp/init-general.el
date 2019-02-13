@@ -26,13 +26,13 @@
                           :keymaps 'normal
                           "SPC" #'evil-search-highlight-persist-remove-all))
 
+    (general-define-key "C-x C-b" #'ibuffer)
+
     (when (fboundp #'projectile-mode)
       (general-define-key "C-x b" #'projectile-switch-to-buffer)
       (if (fboundp #'ivy-switch-buffer)
           (general-define-key "C-x M-u b" #'ivy-switch-buffer)
         (general-define-key "C-x M-u b" #'list-buffers))
-      (general-define-key "C-x C-b" #'projectile-ibuffer)
-      (general-define-key "C-x M-u C-b" #'ibuffer)
       
       ;; Use projectile like Vim's CtrlP plugin
       (general-define-key :keymaps 'normal "C-p" #'projectile-find-file)
