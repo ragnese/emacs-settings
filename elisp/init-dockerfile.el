@@ -4,7 +4,7 @@
 
 ;;; Code:
 (use-package dockerfile-mode
-  :mode "\\Dockerfile\\'"
+  :mode "Dockerfile"
   :ensure t)
 
 (provide 'init-dockerfile)

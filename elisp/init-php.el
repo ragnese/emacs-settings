@@ -5,7 +5,7 @@
   :ensure t
   :mode "\\.php\\'"
   :hook ((php-mode . php-enable-psr2-coding-style)
-         (rust-mode . (lambda ()
+         (php-mode . (lambda ()
                         (when (fboundp #'lsp)
                           (lsp))))))
 
