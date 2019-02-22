@@ -11,6 +11,9 @@
   :config
   (evil-mode 1)
 
+  ;; Don't show state in the modeline
+  (setq evil-mode-line-format 'nil)
+
   (when (and (fboundp 'evil-define-command)
              (fboundp 'evil-prev-buffer)
              (fboundp 'evil-delete-buffer)

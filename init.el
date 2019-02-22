@@ -84,6 +84,7 @@
 
 ;; This must be first, since my use-package declarations depend on it
 (use-package init-diminish)
+(use-package init-modeline)
 ;; Make sure Emacs's PATH matches shell's
 (use-package exec-path-from-shell
   :ensure t
