@@ -4,6 +4,7 @@
 (use-package treemacs
   :ensure t
   :commands treemacs
+  :general ("<f8>" #'treemacs)
   :config
   (setq treemacs-collapse-dirs              0
         treemacs-silent-refresh             t
@@ -16,7 +17,6 @@
     (treemacs-follow-mode t))
   (when (fboundp 'treemacs-filewatch-mode)
     (treemacs-filewatch-mode t)))
-
 
 (use-package treemacs-evil
   :after (treemacs evil)

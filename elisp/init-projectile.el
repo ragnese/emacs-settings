@@ -4,6 +4,11 @@
 (use-package projectile
   :ensure t
   :diminish
+  :defer nil
+  :general
+  (:prefix "SPC" :states 'normal "be" #'projectile-switch-to-buffer)
+  (:prefix "SPC" :states 'normal "p" #'projectile-command-map)
+  (:states 'normal "C-p" #'projectile-find-file)
   :config
   (projectile-mode 1))
 

@@ -8,6 +8,11 @@
   (setq evil-want-keybinding nil)
   (setq evil-want-integration t)
   :ensure t
+  :defer nil
+  :general
+  (:prefix "SPC" :states 'normal "w" #'evil-window-map)
+  (:keymaps 'global-map "M-u" #'universal-argument)
+  (:keymaps 'universal-argument-map "M-u" #'universal-argument-more)
   :config
   (evil-mode 1)
 
@@ -55,6 +60,8 @@
 ;; Vim-like search highlighting
 (use-package evil-search-highlight-persist
   :ensure t
+  :general
+  (:prefix "SPC" :states 'normal "SPC" #'evil-search-highlight-persist-remove-all)
   :config (global-evil-search-highlight-persist t))
 
 (provide 'init-evil)

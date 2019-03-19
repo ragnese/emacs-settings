@@ -10,6 +10,11 @@
 (use-package smartparens
   :ensure t
   :diminish
+  :general
+  ("C-<right>" #'sp-forward-slurp-sexp
+   "M-<right>" #'sp-forward-barf-sexp
+   "C-<left>" #'sp-backward-slurp-sexp
+   "M-<left>" #'sp-backward-barf-sexp)
   :hook ((scheme-mode lisp-mode emacs-lisp-mode clojure-mode common-lisp-mode) . smartparens-strict-mode)
   :config
   (when (fboundp 'sp-local-pair)

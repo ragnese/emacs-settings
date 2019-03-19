@@ -5,6 +5,7 @@
 (use-package ibuffer-projectile
   :after projectile
   :ensure t
+  :general ("C-x C-b" #'ibuffer)
   :hook (ibuffer . ibuffer-projectile-set-filter-groups))
 
 (provide 'init-ibuffer)

@@ -83,6 +83,7 @@
 (setq use-package-compute-statistics t)
 
 ;; This must be first, since my use-package declarations depend on it
+(use-package init-general)
 (use-package init-diminish)
 (use-package init-modeline)
 ;; Make sure Emacs's PATH matches shell's
@@ -91,6 +92,8 @@
   :config (exec-path-from-shell-initialize))
 (use-package init-midnight)
 (use-package init-ibuffer)
+(use-package init-occur)
+(use-package init-swiper)
 ;; Color theme(s)
 (use-package init-theme)
 ;; Fuzzy finding things (files, buffers, etc)
@@ -112,6 +115,10 @@
 (use-package init-flycheck)
 ;; Which-key gives pop up hints for keybindings
 (use-package init-which-key)
+;; Manage Docker containers
+(use-package init-docker)
+;; Vim - NOTE: Make sure it's after which-key
+(use-package init-evil)
 (use-package init-org)
 (use-package init-ox-hugo)
 ;; Tries to guess the correct indent rules for a file
@@ -131,12 +138,6 @@
 (use-package init-javascript)
 (use-package init-cl)
 (use-package init-dockerfile)
-;; Manage Docker containers
-(use-package init-docker)
-;; Vim - NOTE: Make sure it's after which-key and init-rust
-(use-package init-evil)
-;; Use for keybindings - Should load last to not get overwritten
-(use-package init-general)
 
 (provide 'init)
 ;;; init.el ends here
