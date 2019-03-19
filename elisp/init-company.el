@@ -9,7 +9,7 @@
   :hook (prog-mode . global-company-mode)
   :config
   ;; Reduce the time after which the company auto completion popup opens
-  (setq company-idle-delay 0.3)
+  (setq company-idle-delay 0.2)
   ;; Reduce the number of characters before company kicks in
   (setq company-minimum-prefix-length 1)
   ;; Makes the popup window have nicer formatting
