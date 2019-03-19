@@ -16,6 +16,8 @@
   :config
   (evil-mode 1)
 
+  (modify-syntax-entry ?_ "w")
+
   ;; Don't show state in the modeline
   (setq evil-mode-line-format 'nil)
 
