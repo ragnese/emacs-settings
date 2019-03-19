@@ -124,6 +124,7 @@
 ;; Tries to guess the correct indent rules for a file
 (use-package init-dtrt-indent
   :disabled)
+(use-package init-ace-window)
 ;; Language specific stuff
 (use-package init-lsp)
 (use-package init-auctex)
