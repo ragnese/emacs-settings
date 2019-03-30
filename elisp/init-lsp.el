@@ -14,8 +14,7 @@
   :commands lsp-ui-mode
   :after lsp-mode
   :config
-  (setq lsp-ui-sideline-enable nil
-        lsp-ui-doc-enable nil))
+  (setq lsp-ui-sideline-enable nil))
 
 (use-package company-lsp
   :ensure t
