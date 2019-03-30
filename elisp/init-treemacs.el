@@ -8,8 +8,7 @@
   :config
   (setq treemacs-collapse-dirs              0
         treemacs-silent-refresh             t
-        treemacs-is-never-other-window      t
-        treemacs-no-png-images              t)
+        treemacs-is-never-other-window      t)
 
   (when (fboundp 'treemacs-git-mode)
     (treemacs-git-mode 'simple))
