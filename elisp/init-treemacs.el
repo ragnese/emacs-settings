@@ -10,6 +10,8 @@
         treemacs-silent-refresh             t
         treemacs-is-never-other-window      t)
 
+  (treemacs-resize-icons 18)
+
   (when (fboundp 'treemacs-git-mode)
     (treemacs-git-mode 'simple))
   (when (fboundp 'treemacs-follow-mode)

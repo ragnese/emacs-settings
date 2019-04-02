@@ -66,5 +66,10 @@
   (:prefix "SPC" :states 'normal "SPC" #'evil-search-highlight-persist-remove-all)
   :config (global-evil-search-highlight-persist t))
 
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1))
+
 (provide 'init-evil)
 ;;; init-evil ends here
