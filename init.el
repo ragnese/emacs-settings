@@ -85,6 +85,12 @@
 ;; This must be first, since my use-package declarations depend on it
 (use-package init-general)
 (use-package init-diminish)
+;; Which-key gives pop up hints for keybindings
+(use-package init-which-key)
+;; Vim - NOTE: Make sure it's after which-key
+(use-package init-evil)
+(use-package init-smartparens)
+(use-package init-ace-window)
 (use-package init-modeline)
 ;; Make sure Emacs's PATH matches shell's
 (use-package exec-path-from-shell
@@ -113,19 +119,13 @@
   :disabled)
 ;; Syntax checking
 (use-package init-flycheck)
-;; Which-key gives pop up hints for keybindings
-(use-package init-which-key)
 ;; Manage Docker containers
 (use-package init-docker)
-;; Vim - NOTE: Make sure it's after which-key
-(use-package init-evil)
 (use-package init-org)
 (use-package init-ox-hugo)
 ;; Tries to guess the correct indent rules for a file
 (use-package init-dtrt-indent
   :disabled)
-(use-package init-ace-window)
-(use-package init-smartparens)
 ;; Language specific stuff
 (use-package init-lsp)
 (use-package init-auctex)
@@ -140,9 +140,6 @@
 (use-package init-javascript)
 (use-package init-cl)
 (use-package init-dockerfile)
-;; Just useful for tinkering
-(use-package request
-  :ensure t)
 
 (provide 'init)
 ;;; init.el ends here
