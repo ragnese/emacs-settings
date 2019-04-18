@@ -4,7 +4,6 @@
 
 ;; Color scheme
 (use-package monokai-theme
-  :disabled
   :ensure t
   :config
   (setq monokai-background "#161A1F")
@@ -12,6 +11,7 @@
   (load-theme 'monokai t))
 
 (use-package doom-themes
+  :disabled
   :ensure t
   :config
   (load-theme 'doom-molokai t))
