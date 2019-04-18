@@ -110,6 +110,7 @@
 (use-package init-company)
 ;; Git porcelain
 (use-package init-magit)
+(use-package init-counsel-projectile-magit)
 ;; macOS fix for PATH
 (use-package init-macos)
 ;; file tree pane
