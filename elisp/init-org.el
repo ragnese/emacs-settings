@@ -5,6 +5,7 @@
   :ensure nil
   :mode ("\\.org\\'" . org-mode)
   :config
+  (setq org-hierarchical-todo-statistics nil)
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((emacs-lisp . t)
