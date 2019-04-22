@@ -45,7 +45,7 @@
   :after evil
   :ensure t
   :custom (evil-collection-company-use-tng nil)
-  :config (evil-collection-init))
+  :config (evil-collection-init '(dired)))
 
 ;; Add evil-magit
 (use-package evil-magit

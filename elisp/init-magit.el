@@ -5,6 +5,7 @@
   :ensure t
   :diminish auto-revert-mode
   :commands magit-status
+  :general ('magit-status-mode-map "SPC" nil)
   :init
   (with-eval-after-load 'evil-ex
     (when (fboundp 'evil-ex-define-cmd)
