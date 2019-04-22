@@ -108,6 +108,7 @@
 (use-package init-projectile)
 ;; Completion
 (use-package init-company)
+(use-package init-smerge)
 ;; Git porcelain
 (use-package init-magit)
 (use-package init-counsel-projectile-magit)
