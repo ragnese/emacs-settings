@@ -12,8 +12,8 @@
       (evil-ex-define-cmd "git" #'magit-status)))
   (setq vc-handled-backends (delq 'Git vc-handled-backends))
   :config
-  (when (fboundp 'magit-display-buffer-fullframe-status-v1)
-    (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)))
+  (when (fboundp 'magit-display-buffer-same-window-except-diff-v1)
+    (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)))
 
 (provide 'init-magit)
 ;;; init-magit.el ends here
