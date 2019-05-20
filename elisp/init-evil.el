@@ -45,7 +45,11 @@
   :after evil
   :ensure t
   :custom (evil-collection-company-use-tng nil)
-  :config (evil-collection-init '(dired ibuffer)))
+  :config (evil-collection-init '(company
+                                  dired
+                                  ibuffer
+                                  (package-menu package)
+                                  (term term ansi-term multi-term))))
 
 ;; Add evil-magit
 (use-package evil-magit
