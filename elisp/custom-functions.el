@@ -4,7 +4,6 @@
 ;; Function to install required package if it doesn't already exist
 (defun require-package (package)
   "Install PACKAGE if not already installed."
-  (setq-default highlight-tabs t)
   (unless (package-installed-p package)
     (unless (assoc package package-archive-contents)
       (package-refresh-contents))
