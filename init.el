@@ -59,6 +59,8 @@
 ;; Turning this off speeds up cursor movement. I don't know what it does...
 (setq auto-window-vscroll nil)
 
+(global-auto-revert-mode t)
+
 ;; When using built-in customize options, put the results into custom.el
 ;; instead of init.el. Then load that file from here.
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
