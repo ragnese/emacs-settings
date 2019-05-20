@@ -130,10 +130,13 @@
   :disabled)
 ;; Language specific stuff
 (use-package init-lsp)
-(use-package init-auctex)
+(use-package init-auctex
+  :disabled)
 (use-package init-python)
-(use-package init-elixir)
-(use-package init-clojure)
+(use-package init-elixir
+  :disabled)
+(use-package init-clojure
+  :disabled)
 (use-package init-geiser)
 (use-package init-lisps)
 (use-package init-rust)
