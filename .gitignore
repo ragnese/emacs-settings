@@ -5,5 +5,9 @@ elpa/
 eshell/
 tramp
 recentf
+projectile.cache
 projectile-bookmarks.eld
 session.*
+ido.last
+.lsp-session-v1
+transient
